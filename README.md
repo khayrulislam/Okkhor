@@ -8,6 +8,7 @@ we added a simple suggester in Test.java file. the code and output are given bel
 
 ![alt text](https://github.com/khayrulislam/Okkhor/blob/Font-Test-on-TextBox/screenshot/swingTest1.PNG "SWING output")
 ```
+class SuggestionLabel extends JLabel {
     private final JTextField textField;
     private final Window container;
     private JPanel suggestionsPanel;
@@ -332,5 +333,6 @@ class SuggestionLabel extends JLabel {
         String tmp = t + text.substring(text.lastIndexOf(typedWord)).replace(typedWord, suggestedWord);
         textField.setText(tmp + " ");
     }
+}
 
 ```
