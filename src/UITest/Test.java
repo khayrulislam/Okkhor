@@ -2,6 +2,7 @@ package UITest;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -34,17 +35,24 @@ public class Test {
 
 
         JTextField f = new JTextField(50);
+        
+        Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
+        //jEditorPane1.setFont(banglaFont); 
+       // this.setFont(banglaFont);
+        f.setFont(banglaFont);
 
         AutoSuggestor autoSuggestor = new AutoSuggestor(f, frame, null, Color.WHITE.brighter(), Color.black, Color.black, 0.75f) {
-            @Override
+           
+        	
+        	@Override
             boolean wordTyped(String typedWord) {
 
                 //create list for dictionary this in your case might be done via calling a method which queries db and returns results as arraylist
                 ArrayList<String> words = new ArrayList<>();
-                words.add("hello");
-                words.add("heritage");
-                words.add("happiness");
-                words.add("goodbye");
+                words.add("সড়ক");
+                words.add("পরিবহন");
+                words.add("সবচেয়ে");
+                words.add("বিষয়ে");
                 words.add("cruel");
                 words.add("car");
                 words.add("war");
@@ -52,13 +60,15 @@ public class Test {
                 words.add("world");
                 words.add("wall");
 
-
+                
                 setDictionary(words);
                 //addToDictionary("bye");//adds a single word
 
                 return super.wordTyped(typedWord);//now call super to check for any matches against newest dictionary
             }
         };
+        
+        
 
         JPanel p = new JPanel();
 
@@ -114,7 +124,12 @@ class AutoSuggestor {
         this.container = mainWindow;
         this.suggestionFocusedColor = suggestionFocusedColor;
         this.textField.getDocument().addDocumentListener(documentListener);
-
+        
+        //Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
+        //jEditorPane1.setFont(banglaFont); 
+        //this.setFont(banglaFont);
+        
+        
         setDictionary(words);
 
         typedWord = "";
@@ -350,6 +365,9 @@ class SuggestionLabel extends JLabel {
     public SuggestionLabel(String string, final Color borderColor, Color suggestionsTextColor, AutoSuggestor autoSuggestor) {
         super(string);
 
+        Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
+        //jEditorPane1.setFont(banglaFont); 
+        this.setFont(banglaFont);
         this.suggestionsTextColor = suggestionsTextColor;
         this.autoSuggestor = autoSuggestor;
         this.textField = autoSuggestor.getTextField();
