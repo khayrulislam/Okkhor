@@ -1,6 +1,5 @@
 package UITest;
-
-import java.awt.Color;
+ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -9,9 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -25,127 +21,65 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
-/**
+ /**
  * @author David
  */
 public class Test {
-
-    public Test() {
-
-        JFrame frame = new JFrame();
+     public Test() {
+         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        JTextField f = new JTextField(50);
-        
-        Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
-        //jEditorPane1.setFont(banglaFont); 
-       // this.setFont(banglaFont);
-        f.setFont(banglaFont);
-
-        AutoSuggestor autoSuggestor = new AutoSuggestor(f, frame, null, Color.WHITE.brighter(), Color.black, Color.black, 0.75f) {
-           
-        	
-        	@Override
+         JTextField f = new JTextField(50);
+         
+         Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
+         //jEditorPane1.setFont(banglaFont); 
+        // this.setFont(banglaFont);
+         f.setFont(banglaFont);
+         
+         AutoSuggestor autoSuggestor = new AutoSuggestor(f, frame, null, Color.WHITE.brighter(), Color.black, Color.black, 0.75f) {
+            @Override
             boolean wordTyped(String typedWord) {
-
-                //create list for dictionary this in your case might be done via calling a method which queries db and returns results as arraylist
+                 //create list for dictionary this in your case might be done via calling a method which queries db and returns results as arraylist
                 ArrayList<String> words = new ArrayList<>();
+                
+              // গত জুলাই মাসে চীনে নিখোঁজ হন  
+                
+                words.add("গত");
+                words.add("জুলাই");
+                words.add("মাসে");
+                words.add("চীনে");
+                words.add("নিখোঁজ");
+                words.add("হন");
+                
+                words.add("অভিনেত্রী");
+                words.add("ফান");
+                words.add(" বিংবিং");
                 words.add("সড়ক");
                 words.add("পরিবহন");
                 words.add("সবচেয়ে");
                 words.add("বিষয়ে");
+                
+                
+                words.add("heritage");
+                words.add("happiness");
+                words.add("goodbye");
                 words.add("cruel");
                 words.add("car");
                 words.add("war");
                 words.add("will");
                 words.add("world");
                 words.add("wall");
-                
-                /*
-                /////////////////////////////////
-                
-                ArrayList<String> allSantence = new ArrayList<>();
-
-        		try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
-
-        			String sCurrentLine;
-
-        			while ((sCurrentLine = br.readLine()) != null) {
-        				
-        				allSantence.add(sCurrentLine);
-        			}
-
-        		} catch (IOException e) {
-        			e.printStackTrace();
-        		}
-        		
-        		//System.out.println(allSantence.size());
-        		ArrayList<String> allSantence2 = new ArrayList<>();
-        		
-        		for(int i = 0; i < allSantence.size(); i++) {
-        			String arr[] = allSantence.get(i).split(",");
-        			//System.out.println(arr.length);
-        			for(int j = 0; j < arr.length; j++) {
-        				allSantence2.add(arr[j]);
-        			}
-        		}
-        		
-        ArrayList<String> allSantence3 = new ArrayList<>();
-        		
-        		for(int i = 0; i < allSantence2.size(); i++) {
-        			String arr[] = allSantence2.get(i).split("।");
-        			//System.out.println(arr.length);
-        			for(int j = 0; j < arr.length; j++) {
-        				allSantence3.add(arr[j]);
-        			}
-        		}
-        		
-        		//System.out.println(allSantence2.size());
-        		//System.out.println(allSantence3.size());
-        		
-        		//for(int i = 0; i < allSantence3.size(); i++) 
-        			//System.out.println(allSantence3.get(i));
-        		
-        ArrayList<String> allSantence4 = new ArrayList<>();
-        		
-        		for(int i = 0; i < allSantence3.size(); i++) {
-        			String arr[] = allSantence3.get(i).split(" ");
-        			//System.out.println(arr.length);
-        			for(int j = 0; j < arr.length; j++) {
-        				words.add(arr[j]);
-        			}
-        		}
-        		
-        		System.out.println(allSantence4.size());
-        		for(int i = 0; i < allSantence4.size(); i++) 
-        		System.out.println(allSantence4.get(i));
-                
-                
-                ////////////////////////////////////
-				
-                */
-                setDictionary(words);
+                 setDictionary(words);
                 //addToDictionary("bye");//adds a single word
-
-                return super.wordTyped(typedWord);//now call super to check for any matches against newest dictionary
+                 return super.wordTyped(typedWord);//now call super to check for any matches against newest dictionary
             }
         };
-        
-        
-
-        JPanel p = new JPanel();
-
-        p.add(f);
-
-        frame.add(p);
-
-        frame.pack();
+         JPanel p = new JPanel();
+         p.add(f);
+         frame.add(p);
+         frame.pack();
         frame.setVisible(true);
     }
-
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -154,10 +88,8 @@ public class Test {
         });
     }
 }
-
-class AutoSuggestor {
-
-    private final JTextField textField;
+ class AutoSuggestor {
+     private final JTextField textField;
     private final Window container;
     private JPanel suggestionsPanel;
     private JWindow autoSuggestionPopUpWindow;
@@ -169,50 +101,36 @@ class AutoSuggestor {
         public void insertUpdate(DocumentEvent de) {
             checkForAndShowSuggestions();
         }
-
-        @Override
+         @Override
         public void removeUpdate(DocumentEvent de) {
             checkForAndShowSuggestions();
         }
-
-        @Override
+         @Override
         public void changedUpdate(DocumentEvent de) {
             checkForAndShowSuggestions();
         }
     };
     private final Color suggestionsTextColor;
     private final Color suggestionFocusedColor;
-
-    public AutoSuggestor(JTextField textField, Window mainWindow, ArrayList<String> words, Color popUpBackground, Color textColor, Color suggestionFocusedColor, float opacity) {
+     public AutoSuggestor(JTextField textField, Window mainWindow, ArrayList<String> words, Color popUpBackground, Color textColor, Color suggestionFocusedColor, float opacity) {
         this.textField = textField;
         this.suggestionsTextColor = textColor;
         this.container = mainWindow;
         this.suggestionFocusedColor = suggestionFocusedColor;
         this.textField.getDocument().addDocumentListener(documentListener);
-        
-        //Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
-        //jEditorPane1.setFont(banglaFont); 
-        //this.setFont(banglaFont);
-        
-        
-        setDictionary(words);
-
-        typedWord = "";
+         setDictionary(words);
+         typedWord = "";
         currentIndexOfSpace = 0;
         tW = 0;
         tH = 0;
-
-        autoSuggestionPopUpWindow = new JWindow(mainWindow);
+         autoSuggestionPopUpWindow = new JWindow(mainWindow);
         autoSuggestionPopUpWindow.setOpacity(opacity);
-
-        suggestionsPanel = new JPanel();
+         suggestionsPanel = new JPanel();
         suggestionsPanel.setLayout(new GridLayout(0, 1));
         suggestionsPanel.setBackground(popUpBackground);
-
-        addKeyBindingToRequestFocusInPopUpWindow();
+         addKeyBindingToRequestFocusInPopUpWindow();
     }
-
-    private void addKeyBindingToRequestFocusInPopUpWindow() {
+     private void addKeyBindingToRequestFocusInPopUpWindow() {
         textField.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, true), "Down released");
         textField.getActionMap().put("Down released", new AbstractAction() {
             @Override
@@ -232,14 +150,11 @@ class AutoSuggestor {
         suggestionsPanel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0, true), "Down released");
         suggestionsPanel.getActionMap().put("Down released", new AbstractAction() {
             int lastFocusableIndex = 0;
-
-            @Override
+             @Override
             public void actionPerformed(ActionEvent ae) {//allows scrolling of labels in pop window (I know very hacky for now :))
-
-                ArrayList<SuggestionLabel> sls = getAddedSuggestionLabels();
+                 ArrayList<SuggestionLabel> sls = getAddedSuggestionLabels();
                 int max = sls.size();
-
-                if (max > 1) {//more than 1 suggestion
+                 if (max > 1) {//more than 1 suggestion
                     for (int i = 0; i < max; i++) {
                         SuggestionLabel sl = sls.get(i);
                         if (sl.isFocused()) {
@@ -249,8 +164,7 @@ class AutoSuggestor {
                                 autoSuggestionPopUpWindow.setVisible(false);
                                 setFocusToTextField();
                                 checkForAndShowSuggestions();//fire method as if document listener change occured and fired it
-
-                            } else {
+                             } else {
                                 sl.setFocused(false);
                                 lastFocusableIndex = i;
                             }
@@ -274,14 +188,12 @@ class AutoSuggestor {
             }
         });
     }
-
-    private void setFocusToTextField() {
+     private void setFocusToTextField() {
         container.toFront();
         container.requestFocusInWindow();
         textField.requestFocusInWindow();
     }
-
-    public ArrayList<SuggestionLabel> getAddedSuggestionLabels() {
+     public ArrayList<SuggestionLabel> getAddedSuggestionLabels() {
         ArrayList<SuggestionLabel> sls = new ArrayList<>();
         for (int i = 0; i < suggestionsPanel.getComponentCount(); i++) {
             if (suggestionsPanel.getComponent(i) instanceof SuggestionLabel) {
@@ -291,19 +203,14 @@ class AutoSuggestor {
         }
         return sls;
     }
-
-    private void checkForAndShowSuggestions() {
+     private void checkForAndShowSuggestions() {
         typedWord = getCurrentlyTypedWord();
-
-        suggestionsPanel.removeAll();//remove previos words/jlabels that were added
-
-        //used to calcualte size of JWindow as new Jlabels are added
+         suggestionsPanel.removeAll();//remove previos words/jlabels that were added
+         //used to calcualte size of JWindow as new Jlabels are added
         tW = 0;
         tH = 0;
-
-        boolean added = wordTyped(typedWord);
-
-        if (!added) {
+         boolean added = wordTyped(typedWord);
+         if (!added) {
             if (autoSuggestionPopUpWindow.isVisible()) {
                 autoSuggestionPopUpWindow.setVisible(false);
             }
@@ -312,16 +219,12 @@ class AutoSuggestor {
             setFocusToTextField();
         }
     }
-
-    protected void addWordToSuggestions(String word) {
+     protected void addWordToSuggestions(String word) {
         SuggestionLabel suggestionLabel = new SuggestionLabel(word, suggestionFocusedColor, suggestionsTextColor, this);
-
-        calculatePopUpWindowSize(suggestionLabel);
-
-        suggestionsPanel.add(suggestionLabel);
+         calculatePopUpWindowSize(suggestionLabel);
+         suggestionsPanel.add(suggestionLabel);
     }
-
-    public String getCurrentlyTypedWord() {//get newest word after last white spaceif any or the first word if no white spaces
+     public String getCurrentlyTypedWord() {//get newest word after last white spaceif any or the first word if no white spaces
         String text = textField.getText();
         String wordBeingTyped = "";
         if (text.contains(" ")) {
@@ -335,39 +238,32 @@ class AutoSuggestor {
         }
         return wordBeingTyped.trim();
     }
-
-    private void calculatePopUpWindowSize(JLabel label) {
+     private void calculatePopUpWindowSize(JLabel label) {
         //so we can size the JWindow correctly
         if (tW < label.getPreferredSize().width) {
             tW = label.getPreferredSize().width;
         }
         tH += label.getPreferredSize().height;
     }
-
-    private void showPopUpWindow() {
+     private void showPopUpWindow() {
         autoSuggestionPopUpWindow.getContentPane().add(suggestionsPanel);
         autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textField.getWidth(), 30));
         autoSuggestionPopUpWindow.setSize(tW, tH);
         autoSuggestionPopUpWindow.setVisible(true);
-
-        int windowX = 0;
+         int windowX = 0;
         int windowY = 0;
-
-        windowX = container.getX() + textField.getX() + 5;
+         windowX = container.getX() + textField.getX() + 5;
         if (suggestionsPanel.getHeight() > autoSuggestionPopUpWindow.getMinimumSize().height) {
             windowY = container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getMinimumSize().height;
         } else {
             windowY = container.getY() + textField.getY() + textField.getHeight() + autoSuggestionPopUpWindow.getHeight();
         }
-
-        autoSuggestionPopUpWindow.setLocation(windowX, windowY);
+         autoSuggestionPopUpWindow.setLocation(windowX, windowY);
         autoSuggestionPopUpWindow.setMinimumSize(new Dimension(textField.getWidth(), 30));
         autoSuggestionPopUpWindow.revalidate();
         autoSuggestionPopUpWindow.repaint();
-
-    }
-
-    public void setDictionary(ArrayList<String> words) {
+     }
+     public void setDictionary(ArrayList<String> words) {
         dictionary.clear();
         if (words == null) {
             return;//so we can call constructor with null value for dictionary without exception thrown
@@ -376,33 +272,25 @@ class AutoSuggestor {
             dictionary.add(word);
         }
     }
-
-    public JWindow getAutoSuggestionPopUpWindow() {
+     public JWindow getAutoSuggestionPopUpWindow() {
         return autoSuggestionPopUpWindow;
     }
-
-    public Window getContainer() {
+     public Window getContainer() {
         return container;
     }
-
-    public JTextField getTextField() {
+     public JTextField getTextField() {
         return textField;
     }
-
-    public void addToDictionary(String word) {
+     public void addToDictionary(String word) {
         dictionary.add(word);
     }
-
-    boolean wordTyped(String typedWord) {
-
-        if (typedWord.isEmpty()) {
+     boolean wordTyped(String typedWord) {
+         if (typedWord.isEmpty()) {
             return false;
         }
         //System.out.println("Typed word: " + typedWord);
-
-        boolean suggestionAdded = false;
-
-        for (String word : dictionary) {//get words in the dictionary which we added
+         boolean suggestionAdded = false;
+         for (String word : dictionary) {//get words in the dictionary which we added
             boolean fullymatches = true;
             for (int i = 0; i < typedWord.length(); i++) {//each string in the word
                 if (!typedWord.toLowerCase().startsWith(String.valueOf(word.toLowerCase().charAt(i)), i)) {//check for match
@@ -418,46 +306,38 @@ class AutoSuggestor {
         return suggestionAdded;
     }
 }
-
-class SuggestionLabel extends JLabel {
-
-    private boolean focused = false;
+ class SuggestionLabel extends JLabel {
+     private boolean focused = false;
     private final JWindow autoSuggestionsPopUpWindow;
     private final JTextField textField;
     private final AutoSuggestor autoSuggestor;
     private Color suggestionsTextColor, suggestionBorderColor;
-
-    public SuggestionLabel(String string, final Color borderColor, Color suggestionsTextColor, AutoSuggestor autoSuggestor) {
+     public SuggestionLabel(String string, final Color borderColor, Color suggestionsTextColor, AutoSuggestor autoSuggestor) {
         super(string);
-
+        
         Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
         //jEditorPane1.setFont(banglaFont); 
         this.setFont(banglaFont);
-        this.suggestionsTextColor = suggestionsTextColor;
+        
+         this.suggestionsTextColor = suggestionsTextColor;
         this.autoSuggestor = autoSuggestor;
         this.textField = autoSuggestor.getTextField();
         this.suggestionBorderColor = borderColor;
         this.autoSuggestionsPopUpWindow = autoSuggestor.getAutoSuggestionPopUpWindow();
-
-        initComponent();
+         initComponent();
     }
-
-    private void initComponent() {
+     private void initComponent() {
         setFocusable(true);
         setForeground(suggestionsTextColor);
-
-        addMouseListener(new MouseAdapter() {
+         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me) {
                 super.mouseClicked(me);
-
-                replaceWithSuggestedText();
-
-                autoSuggestionsPopUpWindow.setVisible(false);
+                 replaceWithSuggestedText();
+                 autoSuggestionsPopUpWindow.setVisible(false);
             }
         });
-
-        getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "Enter released");
+         getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "Enter released");
         getActionMap().put("Enter released", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -466,8 +346,7 @@ class SuggestionLabel extends JLabel {
             }
         });
     }
-
-    public void setFocused(boolean focused) {
+     public void setFocused(boolean focused) {
         if (focused) {
             setBorder(new LineBorder(suggestionBorderColor));
         } else {
@@ -476,12 +355,10 @@ class SuggestionLabel extends JLabel {
         repaint();
         this.focused = focused;
     }
-
-    public boolean isFocused() {
+     public boolean isFocused() {
         return focused;
     }
-
-    private void replaceWithSuggestedText() {
+     private void replaceWithSuggestedText() {
         String suggestedWord = getText();
         String text = textField.getText();
         String typedWord = autoSuggestor.getCurrentlyTypedWord();
