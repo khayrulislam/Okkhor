@@ -63,6 +63,7 @@ public class Test {
                 words.add("world");
                 words.add("wall");
                 
+                /*
                 /////////////////////////////////
                 
                 ArrayList<String> allSantence = new ArrayList<>();
@@ -124,7 +125,7 @@ public class Test {
                 
                 ////////////////////////////////////
 				
-                
+                */
                 setDictionary(words);
                 //addToDictionary("bye");//adds a single word
 
