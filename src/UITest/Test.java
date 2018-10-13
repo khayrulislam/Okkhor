@@ -42,14 +42,13 @@ public class Test {
                  //create list for dictionary this in your case might be done via calling a method which queries db and returns results as arraylist
                 
                  
-                
+                /*
                 words.add("গত");
                 words.add("জুলাই");
                 words.add("মাসে");
                 words.add("চীনে");
                 words.add("নিখোঁজ");
                 words.add("হন");
-                
                 words.add("অভিনেত্রী");
                 words.add("ফান");
                 words.add(" বিংবিং");
@@ -57,7 +56,7 @@ public class Test {
                 words.add("পরিবহন");
                 words.add("সবচেয়ে");
                 words.add("বিষয়ে");
-                
+                */
                 
                 words.add("heritage");
                 words.add("happiness");
@@ -82,10 +81,32 @@ public class Test {
      
      public void run() {
      
+    	 
+    	 testing();
+    	 
     	 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     	//testing();
+     	//
      	//new Test();
      }
+
+	private void testing() {
+		
+		/*words.add("গত");
+        words.add("জুলাই");
+        words.add("মাসে");
+        words.add("চীনে");
+        words.add("নিখোঁজ");
+        words.add("হন");
+        words.add("অভিনেত্রী");
+        words.add("ফান");
+        words.add(" বিংবিং");
+        words.add("সড়ক");
+        words.add("পরিবহন");
+        words.add("সবচেয়ে");
+        words.add("বিষয়ে");
+        
+        */
+	}
      
      /*
      public static void main(String[] args) {
