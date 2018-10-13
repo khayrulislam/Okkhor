@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -30,6 +33,7 @@ public class Test {
 	private JFrame frame = new JFrame();
 	private JTextField f = new JTextField(50);
 	private ArrayList<String> words = new ArrayList<>();
+	private String FILENAME = "test2.txt";
 	
      public Test() {
          
@@ -83,10 +87,8 @@ public class Test {
      
     	 
     	 testing();
-    	 
     	 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-     	//
-     	//new Test();
+     	
      }
 
 	private void testing() {
@@ -106,6 +108,26 @@ public class Test {
         words.add("বিষয়ে");
         
         */
+		
+		//ArrayList<String> allSantence = new ArrayList<>();
+
+		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				//String temp[] = sCurrentLine.split('।');
+				//System.out.println(sCurrentLine);
+				words.add(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		for(int i = 0; i < words.size(); i++)
+			System.out.println(words.get(i));
+		
 	}
      
      /*
