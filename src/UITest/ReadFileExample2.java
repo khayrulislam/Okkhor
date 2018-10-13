@@ -51,8 +51,8 @@ ArrayList<String> allSantence3 = new ArrayList<>();
 		System.out.println(allSantence2.size());
 		System.out.println(allSantence3.size());
 		
-		//for(int i = 0; i < allSantence3.size(); i++) 
-			//System.out.println(allSantence3.get(i));
+		for(int i = 0; i < allSantence3.size(); i++) 
+			System.out.println(allSantence3.get(i));
 		
 ArrayList<String> allSantence4 = new ArrayList<>();
 		
@@ -65,8 +65,8 @@ ArrayList<String> allSantence4 = new ArrayList<>();
 		}
 		
 		System.out.println(allSantence4.size());
-		for(int i = 0; i < allSantence4.size(); i++) 
-		System.out.println(allSantence4.get(i));
+		//for(int i = 0; i < allSantence4.size(); i++) 
+		//System.out.println(allSantence4.get(i));
 	}
 
 }

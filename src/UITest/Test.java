@@ -1,5 +1,6 @@
 package UITest;
- import java.awt.Color;
+
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -28,7 +29,7 @@ public class Test {
 	private Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
 	private JFrame frame = new JFrame();
 	private JTextField f = new JTextField(50);
-	
+	private ArrayList<String> words = new ArrayList<>();
 	
      public Test() {
          
@@ -39,9 +40,8 @@ public class Test {
             @Override
             boolean wordTyped(String typedWord) {
                  //create list for dictionary this in your case might be done via calling a method which queries db and returns results as arraylist
-                ArrayList<String> words = new ArrayList<>();
                 
-              // গত জুলাই মাসে চীনে নিখোঁজ হন  
+                 
                 
                 words.add("গত");
                 words.add("জুলাই");
@@ -79,15 +79,36 @@ public class Test {
          frame.pack();
         frame.setVisible(true);
     }
+     
+     public void run() {
+     
+    	 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     	//testing();
+     	//new Test();
+     }
+     
+     /*
      public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Test();
+            
+            	testing();
+            	//new Test();
             }
+
+			private void testing() {
+				// TODO Auto-generated method stub
+				System.out.println("hello");
+			}
         });
-    }
+    }*/
 }
+
+
+
+
+
  class AutoSuggestor {
      private final JTextField textField;
     private final Window container;
