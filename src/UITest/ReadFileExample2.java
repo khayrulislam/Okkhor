@@ -64,9 +64,10 @@ ArrayList<String> allSantence4 = new ArrayList<>();
 			}
 		}
 		
-		System.out.println(allSantence4.size());
+		
 		for(int i = 0; i < allSantence4.size(); i++) 
 		System.out.println(allSantence4.get(i));
+		System.out.println(allSantence4.size());
 	}
 
 }
