@@ -21,18 +21,18 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
- /**
- * @author David
- */
+
+
 public class Test {
+	
+	private Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
+	private JFrame frame = new JFrame();
+	private JTextField f = new JTextField(50);
+	
+	
      public Test() {
-         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         JTextField f = new JTextField(50);
          
-         Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
-         //jEditorPane1.setFont(banglaFont); 
-        // this.setFont(banglaFont);
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          f.setFont(banglaFont);
          
          AutoSuggestor autoSuggestor = new AutoSuggestor(f, frame, null, Color.WHITE.brighter(), Color.black, Color.black, 0.75f) {
