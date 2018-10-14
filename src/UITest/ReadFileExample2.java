@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ReadFileExample2 {
 
@@ -65,9 +67,14 @@ ArrayList<String> allSantence4 = new ArrayList<>();
 		}
 		
 		
-		for(int i = 0; i < allSantence4.size(); i++) 
-		System.out.println(allSantence4.get(i));
+		Set<String> st = new HashSet<>();
+		
+		for(int i = 0; i < allSantence4.size(); i++) {
+			System.out.println(allSantence4.get(i));
+			st.add(allSantence4.get(i));
+		}
 		System.out.println(allSantence4.size());
+		System.out.println(st.size());
 	}
 
 }
