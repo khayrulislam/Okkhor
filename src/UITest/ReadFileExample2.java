@@ -20,8 +20,6 @@ public class ReadFileExample2 {
 			String sCurrentLine;
 
 			while ((sCurrentLine = br.readLine()) != null) {
-				//String temp[] = sCurrentLine.split('।');
-				//System.out.println(sCurrentLine);
 				allSantence.add(sCurrentLine);
 			}
 
