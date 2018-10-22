@@ -31,7 +31,7 @@ public class Test {
 	private Font banglaFont = new Font("Kalpurush", Font.PLAIN, 16);
 	private JFrame frame = new JFrame();
 	private JTextField f = new JTextField(50);
-	private ArrayList<String> words = new ArrayList<>();
+	public static ArrayList<String> words = new ArrayList<>();
 	private String FILENAME = "test2.txt";
 
 	public Test() {
@@ -271,9 +271,12 @@ class AutoSuggestor {
 
 	private void checkForAndShowSuggestions() {
 		typedWord = getCurrentlyTypedWord();
-		suggestionsPanel.removeAll();// remove previos words/jlabels that were
-										// added
-		// used to calcualte size of JWindow as new Jlabels are added
+		suggestionsPanel.removeAll();
+		
+		//System.out.println("hlkdjlkafjsdlkf");
+
+		Test.words.remove(Test.words.size()-1);
+		Test.words.add("আতিক");
 		tW = 0;
 		tH = 0;
 		boolean added = wordTyped(typedWord);
