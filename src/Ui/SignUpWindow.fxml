@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="720.0" styleClass="rootPane" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
+   <children>
+      <AnchorPane id="signInCenterPane" fx:id="signUpCenterPane" layoutX="165.0" layoutY="55.0" prefHeight="490.0" prefWidth="390.0" styleClass="centerPane">
+         <children>
+            <TextField fx:id="SignUpEmailTf" focusTraversable="false" layoutX="88.0" layoutY="207.0" prefHeight="32.0" prefWidth="229.0" promptText="email@example.com" styleClass="textField">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <Button id="signUpSignUpBt" fx:id="signUpSignUpBt" focusTraversable="false" layoutX="88.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#signUpButtonClick" prefHeight="37.0" prefWidth="229.0" text="SignUp" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="88.0" layoutY="180.0" text="Email">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button id="signUpSkipBt" fx:id="signupSkipBt" focusTraversable="false" layoutX="280.0" layoutY="426.0" mnemonicParsing="false" onMouseClicked="#skipButtonClick" text="Skip" />
+            <Label layoutX="88.0" layoutY="264.0" text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="139.0" layoutY="45.0" text="OKKHOR">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="signUpPasswordTf" focusTraversable="false" layoutX="89.0" layoutY="291.0" prefHeight="37.0" prefWidth="229.0" promptText="3&lt;password&lt;8" styleClass="textField">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="signUpUsernameTf" focusTraversable="false" layoutX="88.0" layoutY="128.0" prefHeight="32.0" prefWidth="229.0" promptText="Username" styleClass="textField">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TextField>
+            <Label layoutX="88.0" layoutY="101.0" text="Username">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button id="signUpSkipBt" fx:id="signupBackBt" focusTraversable="false" layoutX="91.0" layoutY="426.0" mnemonicParsing="false" onMouseClicked="#backButtonClick" text="Back" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
