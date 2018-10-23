@@ -20,33 +20,33 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <Button id="signInSignInBt" fx:id="signInSignInBt" focusTraversable="false" layoutX="89.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#signInButtonClick" prefHeight="37.0" prefWidth="229.0" text="SignIn" textAlignment="CENTER">
+            <Button id="signInSignInBt" fx:id="signInSignInBt" focusTraversable="false" layoutX="89.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#signInButtonClick" prefHeight="37.0" prefWidth="229.0" text="প্রবেশ করুন" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label layoutX="89.0" layoutY="125.0" text="Email">
+            <Label layoutX="89.0" layoutY="125.0" text="ইমেল">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="SignInSignUpLb" layoutX="88.0" layoutY="421.0" onMouseClicked="#signUpLableClick" text="SignUp" textFill="#007c5d" underline="true">
+            <Label fx:id="SignInSignUpLb" layoutX="88.0" layoutY="421.0" onMouseClicked="#signUpLableClick" text="অ্যাকাউন্ট তৈরি করুন" textFill="#007c5d">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button id="signInSkipBt" fx:id="signInSkipBt" focusTraversable="false" layoutX="280.0" layoutY="418.0" mnemonicParsing="false" onMouseClicked="#skipButtonClick" text="skip" />
-            <Label layoutX="89.0" layoutY="209.0" text="Password">
+            <Button id="signInSkipBt" fx:id="signInSkipBt" focusTraversable="false" layoutX="275.0" layoutY="419.0" mnemonicParsing="false" onMouseClicked="#skipButtonClick" text="বিরত" />
+            <Label layoutX="89.0" layoutY="209.0" text="পাসওয়ার্ড">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="139.0" layoutY="45.0" text="OKKHOR">
+            <Label layoutX="152.0" layoutY="45.0" text="অক্ষর">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <PasswordField fx:id="signInPasswordTf" focusTraversable="false" layoutX="90.0" layoutY="236.0" prefHeight="37.0" prefWidth="229.0" promptText="3&lt;password&lt;8" styleClass="textField">
+            <PasswordField fx:id="signInPasswordTf" focusTraversable="false" layoutX="90.0" layoutY="236.0" prefHeight="37.0" prefWidth="229.0" promptText="পাসওয়ার্ড" styleClass="textField">
                <font>
                   <Font size="16.0" />
                </font>

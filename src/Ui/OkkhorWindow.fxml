@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
 <AnchorPane prefHeight="600.0" prefWidth="720.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OkkhorController">
-	<!-- TODO Add Nodes -->
+   <children>
+      <TextField layoutX="39.0" layoutY="61.0" prefHeight="25.0" prefWidth="611.0" />
+      <Label layoutX="255.0" layoutY="292.0" text="আমি" />
+   </children>
 </AnchorPane>
