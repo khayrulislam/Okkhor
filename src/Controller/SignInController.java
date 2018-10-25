@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import CurrentStatus.UserStatus;
 import DataBase.DataBaseConnection;
 import Utils.Util;
 import Validation.RegularExpressionCheck;
@@ -44,6 +45,8 @@ public class SignInController extends WindowTransition implements Initializable 
 	}
 	
 	public void skipButtonClick() {
+		UserStatus us = UserStatus.getUserStausInstance();
+		us.setDefaultUserStatus();
 		loadWindow(Util.OKKHOR_FXML);
 	}
 

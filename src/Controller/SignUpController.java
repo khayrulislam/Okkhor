@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import CurrentStatus.UserStatus;
 import DataBase.DataBaseConnection;
 import DataObject.User;
 import Utils.Util;
@@ -42,7 +43,6 @@ public class SignUpController extends WindowTransition implements Initializable 
 		if(textFieldComplete) {
 			
 			User user = new User(signUpUsernameTf.getText(), signUpEmailTf.getText(), signUpPasswordTf.getText(), Util.getDateTime(Util.DATE_FORMAT), Util.getDateTime(Util.TIME_FORMAT));
-			
 			if( dbc.insert(user) ) {
 				System.out.println("successfully insert");
 				loadWindow(Util.OKKHOR_FXML);
@@ -56,6 +56,8 @@ public class SignUpController extends WindowTransition implements Initializable 
 	}
 	
 	public void skipButtonClick() {
+		UserStatus us = UserStatus.getUserStausInstance();
+		us.setDefaultUserStatus();
 		loadWindow(Util.OKKHOR_FXML);
 	}
 	

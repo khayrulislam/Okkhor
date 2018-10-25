@@ -8,8 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+import CurrentStatus.UserStatus;
 import DataObject.User;
+import Utils.Util;
 
 public class DataBaseConnection {
 
@@ -94,7 +95,7 @@ public class DataBaseConnection {
             pstmt.setString(4, user.getAccountCreationDate());
             pstmt.setString(5, user.getAccountCreationTime());
             pstmt.executeUpdate();
-            
+            updateUserStatus(user);
             return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -125,7 +126,12 @@ public class DataBaseConnection {
     }
     
     
-    
+    private void updateUserStatus(User user) {
+    	
+    	UserStatus us = UserStatus.getUserStausInstance();
+		us.changeUserStatus(user, Util.LOGGED_IN);
+		user.printUser();
+    }
     
     
     public boolean isUserExist(String email,String password) {
@@ -138,7 +144,7 @@ public class DataBaseConnection {
         	
         	while (rs.next()) {
     			User user = new User(rs.getString("username"), rs.getString("email"), rs.getString("password"), rs.getString("date"), rs.getString("time"));
-    			user.printUser();
+    			updateUserStatus(user);
     			return true;
             }
             
