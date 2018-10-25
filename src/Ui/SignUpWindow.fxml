@@ -12,7 +12,7 @@
    <children>
       <AnchorPane id="signInCenterPane" fx:id="signUpCenterPane" layoutX="165.0" layoutY="55.0" prefHeight="490.0" prefWidth="390.0" styleClass="centerPane">
          <children>
-            <TextField fx:id="SignUpEmailTf" focusTraversable="false" layoutX="88.0" layoutY="207.0" prefHeight="32.0" prefWidth="229.0" promptText="email@example.com" styleClass="textField">
+            <TextField fx:id="signUpEmailTf" focusTraversable="false" layoutX="88.0" layoutY="171.0" prefHeight="32.0" prefWidth="229.0" promptText="email@example.com" styleClass="textField">
                <font>
                   <Font size="16.0" />
                </font>
@@ -20,33 +20,33 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <Button id="signUpSignUpBt" fx:id="signUpSignUpBt" focusTraversable="false" layoutX="88.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#signUpButtonClick" prefHeight="37.0" prefWidth="229.0" text="নিবন্ধন করুন" textAlignment="CENTER">
+            <Button id="signUpSignUpBt" fx:id="signUpSignUpBt" focusTraversable="false" layoutX="90.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#signUpButtonClick" prefHeight="37.0" prefWidth="229.0" text="নিবন্ধন করুন" textAlignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label layoutX="88.0" layoutY="180.0" text="ইমেল">
+            <Label layoutX="88.0" layoutY="144.0" text="ইমেল">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button id="signUpSkipBt" fx:id="signupSkipBt" focusTraversable="false" layoutX="274.0" layoutY="426.0" mnemonicParsing="false" onMouseClicked="#skipButtonClick" text="বিরত" />
-            <Label layoutX="88.0" layoutY="264.0" text="পাসওয়ার্ড">
+            <Button id="signUpSkipBt" fx:id="signupSkipBt" focusTraversable="false" layoutX="275.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#skipButtonClick" text="বিরত" />
+            <Label layoutX="88.0" layoutY="220.0" text="পাসওয়ার্ড">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="152.0" layoutY="45.0" text="অক্ষর">
+            <Label layoutX="152.0" layoutY="14.0" text="অক্ষর">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <PasswordField fx:id="signUpPasswordTf" focusTraversable="false" layoutX="89.0" layoutY="291.0" prefHeight="37.0" prefWidth="229.0" promptText="৩ &lt; পাসওয়ার্ড &lt; ৮" styleClass="textField">
+            <PasswordField fx:id="signUpPasswordTf" focusTraversable="false" layoutX="89.0" layoutY="247.0" prefHeight="37.0" prefWidth="229.0" promptText="৩ &lt; পাসওয়ার্ড &lt; ৮" styleClass="textField">
                <font>
                   <Font size="16.0" />
                </font>
             </PasswordField>
-            <TextField fx:id="signUpUsernameTf" focusTraversable="false" layoutX="88.0" layoutY="128.0" prefHeight="32.0" prefWidth="229.0" promptText="নাম" styleClass="textField">
+            <TextField fx:id="signUpUsernameTf" layoutX="88.0" layoutY="98.0" prefHeight="32.0" prefWidth="229.0" promptText="নাম" styleClass="textField">
                <font>
                   <Font size="16.0" />
                </font>
@@ -54,12 +54,23 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </TextField>
-            <Label layoutX="88.0" layoutY="101.0" text="ব্যবহারকারীর নাম">
+            <Label layoutX="88.0" layoutY="71.0" text="ব্যবহারকারীর নাম">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button id="signUpSkipBt" fx:id="signupBackBt" focusTraversable="false" layoutX="91.0" layoutY="426.0" mnemonicParsing="false" onMouseClicked="#backButtonClick" text="পিছনে" />
+            <Button id="signUpSkipBt" fx:id="signupBackBt" focusTraversable="false" layoutX="92.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#backButtonClick" text="পিছনে" />
+            <Label layoutX="89.0" layoutY="296.0" text="পাসওয়ার্ড নিশ্চিত করুন">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="signUpConfirmPasswordTf" focusTraversable="false" layoutX="90.0" layoutY="323.0" prefHeight="37.0" prefWidth="229.0" promptText="৩ &lt; পাসওয়ার্ড &lt; ৮" styleClass="textField">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="signUpErrorMessageLb" layoutX="93.0" layoutY="365.0" text="আপনার তথ্য গুলো পুনরায় পর্যবেক্ষণ করুন" textFill="#dd0303" visible="false" />
          </children>
       </AnchorPane>
    </children>
