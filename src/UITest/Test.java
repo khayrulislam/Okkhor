@@ -44,10 +44,7 @@ public class Test {
 			@Override
 			boolean wordTyped(String typedWord) {
 				// create list for dictionary this in your case might be done
-				// via calling a method which queries db and returns results as
-				// arraylist
-
-				/*
+								/*
 				 * words.add("গত"); words.add("জুলাই"); words.add("মাসে");
 				 * words.add("চীনে"); words.add("নিখোঁজ"); words.add("হন");
 				 * words.add("অভিনেত্রী"); words.add("ফান");
