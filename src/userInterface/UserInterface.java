@@ -2,7 +2,11 @@ package userInterface;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -49,7 +53,7 @@ public class UserInterface {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		textField = new JTextField();
+		textField = new JTextField(10);
 		textField.setBounds(10, 11, 616, 66);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
@@ -90,7 +94,19 @@ public class UserInterface {
 		frame.getContentPane().add(panel);
 		
 		
-		
+		textField.addKeyListener(new KeyAdapter() {
+	        @Override
+	        public void keyPressed(KeyEvent e) {
+	            /*if(e.getKeyCode() == KeyEvent.VK_ENTER){
+	                // something like...
+	               //mTextField.getText();
+	               // or...
+	               //mButton.doClick();
+	            }*/
+	        	//System.out.println("kjfksjda");
+	        }
+
+	    });
 		
 		
 	}
