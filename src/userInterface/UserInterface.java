@@ -20,8 +20,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-
-
 import javax.swing.JTextArea;
 
 public class UserInterface {
@@ -63,79 +61,53 @@ public class UserInterface {
 		frame.setBounds(100, 100, 933, 649);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		frame.setResizable(false);
+
 		textField = new JTextField(10);
 		textField.setBounds(10, 11, 616, 66);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		textField.setFont(banglaFont);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 97, 579, 502);
-		
-		
-		panel.setBorder ( new TitledBorder ( new EtchedBorder (), "Display Area" ) );
-		JTextArea display = new JTextArea (18, 44);
-	    display.setEditable ( false ); // set textArea non-editable
-	    display.setFont(banglaFont);
-	    JScrollPane scroll = new JScrollPane ( display );
-	    scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
 
-	    //Add Textarea in to middle panel
-	    panel.add ( scroll );
+		panel.setBorder(new TitledBorder(new EtchedBorder(), "Information"));
+		JTextArea display = new JTextArea(18, 44);
+		display.setEditable(false); // set textArea non-editable
+		display.setFont(banglaFont);
+		JScrollPane scroll = new JScrollPane(display);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-	    display.setText("Hello");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    
-		
-		
-		
+		// Add Textarea in to middle panel
+		panel.add(scroll);
+
 		frame.getContentPane().add(panel);
-		
-		
+
 		words = new ArrayList<>();
 		testing();
-		
-		
+
 		AutoSuggestor autoSuggestor = new AutoSuggestor(textField, frame, null, Color.WHITE.brighter(), Color.black,
 				Color.black, 0.75f) {
 			@Override
 			boolean wordTyped(String typedWord) {
 
-				/*words.add("heritage");
-				words.add("happiness");
-				words.add("goodbye");
-				words.add("cruel");
-				words.add("car");
-				words.add("war");
-				words.add("will");
-				words.add("world");
-				words.add("wall");*/
 				setDictionary(words);
 				return super.wordTyped(typedWord);
 			}
 		};
-		
-		
-		
-		
-		
-		textField.addKeyListener(new KeyAdapter() {
-	        @Override
-	        public void keyPressed(KeyEvent e) {
-	        	display.setText(display.getText()+"\n" + textField.getText());
-	        	autoSuggestor.dictionary = new ArrayList<>();
-	        	autoSuggestor.dictionary.add("Atiq");
-	        	
-	        }
 
-	    });
-		
-		
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				display.setText(display.getText() + "\n" + textField.getText());
+				autoSuggestor.dictionary = new ArrayList<>();
+				autoSuggestor.dictionary.add("Atiq");
+
+			}
+
+		});
+
 	}
 
 	private void testing() {
@@ -153,6 +125,7 @@ public class UserInterface {
 
 		for (int i = 0; i < words.size(); i++)
 			System.out.println(words.get(i));
-		
+		words.add("atiq");
+
 	}
 }
