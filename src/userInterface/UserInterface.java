@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
@@ -14,6 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+
+
+
 import javax.swing.JTextArea;
 
 public class UserInterface {
@@ -77,33 +81,54 @@ public class UserInterface {
 	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
 	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
 	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
-	    display.setText(display.getText()+"  sfdgsdf \n jkfdsfldsfklsdkfls;dfk;lsdk");
+	    
 		
 		
 		
 		frame.getContentPane().add(panel);
 		
 		
+		ArrayList<String> words = new ArrayList<>();
+		
+		
+		AutoSuggestor autoSuggestor = new AutoSuggestor(textField, frame, null, Color.WHITE.brighter(), Color.black,
+				Color.black, 0.75f) {
+			@Override
+			boolean wordTyped(String typedWord) {
+				// create list for dictionary this in your case might be done
+								/*
+				 * words.add("গত"); words.add("জুলাই"); words.add("মাসে");
+				 * words.add("চীনে"); words.add("নিখোঁজ"); words.add("হন");
+				 * words.add("অভিনেত্রী"); words.add("ফান");
+				 * words.add(" বিংবিং"); words.add("সড়ক"); words.add("পরিবহন");
+				 * words.add("সবচেয়ে"); words.add("বিষয়ে");
+				 */
+
+				words.add("heritage");
+				words.add("happiness");
+				words.add("goodbye");
+				words.add("cruel");
+				words.add("car");
+				words.add("war");
+				words.add("will");
+				words.add("world");
+				words.add("wall");
+				setDictionary(words);
+				// addToDictionary("bye");//adds a single word
+				return super.wordTyped(typedWord);// now call super to check for
+													// any matches against
+													// newest dictionary
+			}
+		};
+		
+		
+		
+		
+		
 		textField.addKeyListener(new KeyAdapter() {
 	        @Override
 	        public void keyPressed(KeyEvent e) {
-	            /*if(e.getKeyCode() == KeyEvent.VK_ENTER){
-	                // something like...
-	               //mTextField.getText();
-	               // or...
-	               //mButton.doClick();
-	            }*/
-	        	//System.out.println("kjfksjda");
+	        	display.setText(display.getText()+"\n" + textField.getText());
 	        }
 
 	    });
