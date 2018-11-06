@@ -31,9 +31,28 @@ public class Test {
          JTextField f = new JTextField(50);
          
          Font banglaFont=new Font("Kalpurush", Font.PLAIN, 16);
-         //jEditorPane1.setFont(banglaFont); 
-        // this.setFont(banglaFont);
          f.setFont(banglaFont);
+         
+         ///////////////////////////////////////////
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         ///////////////////////////////////////////
          
          AutoSuggestor autoSuggestor = new AutoSuggestor(f, frame, null, Color.WHITE.brighter(), Color.black, Color.black, 0.75f) {
             @Override
