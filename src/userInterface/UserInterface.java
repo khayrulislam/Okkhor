@@ -2,9 +2,13 @@ package userInterface;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -24,6 +28,9 @@ public class UserInterface {
 
 	private JFrame frame;
 	private JTextField textField;
+	private ArrayList<String> words;
+	private String FILENAME = "test2.txt";
+	private static Font banglaFont = new Font("Kalpurush", Font.PLAIN, 16);
 
 	/**
 	 * Launch the application.
@@ -61,14 +68,16 @@ public class UserInterface {
 		textField.setBounds(10, 11, 616, 66);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
+		textField.setFont(banglaFont);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 97, 579, 502);
 		
 		
 		panel.setBorder ( new TitledBorder ( new EtchedBorder (), "Display Area" ) );
-		JTextArea display = new JTextArea (29, 48);
+		JTextArea display = new JTextArea (18, 44);
 	    display.setEditable ( false ); // set textArea non-editable
+	    display.setFont(banglaFont);
 	    JScrollPane scroll = new JScrollPane ( display );
 	    scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
 
@@ -88,16 +97,16 @@ public class UserInterface {
 		frame.getContentPane().add(panel);
 		
 		
-		ArrayList<String> words = new ArrayList<>();
+		words = new ArrayList<>();
+		testing();
 		
 		
 		AutoSuggestor autoSuggestor = new AutoSuggestor(textField, frame, null, Color.WHITE.brighter(), Color.black,
 				Color.black, 0.75f) {
 			@Override
 			boolean wordTyped(String typedWord) {
-				
 
-				words.add("heritage");
+				/*words.add("heritage");
 				words.add("happiness");
 				words.add("goodbye");
 				words.add("cruel");
@@ -105,12 +114,9 @@ public class UserInterface {
 				words.add("war");
 				words.add("will");
 				words.add("world");
-				words.add("wall");
+				words.add("wall");*/
 				setDictionary(words);
-				// addToDictionary("bye");//adds a single word
-				return super.wordTyped(typedWord);// now call super to check for
-													// any matches against
-													// newest dictionary
+				return super.wordTyped(typedWord);
 			}
 		};
 		
@@ -129,6 +135,24 @@ public class UserInterface {
 
 	    });
 		
+		
+	}
+
+	private void testing() {
+		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				words.add(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		for (int i = 0; i < words.size(); i++)
+			System.out.println(words.get(i));
 		
 	}
 }
