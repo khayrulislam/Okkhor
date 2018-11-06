@@ -63,11 +63,11 @@ public class UserInterface {
 		textField.setColumns(10);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 97, 579, 368);
+		panel.setBounds(10, 97, 579, 502);
 		
 		
 		panel.setBorder ( new TitledBorder ( new EtchedBorder (), "Display Area" ) );
-		JTextArea display = new JTextArea ( 16, 40 );
+		JTextArea display = new JTextArea (29, 48);
 	    display.setEditable ( false ); // set textArea non-editable
 	    JScrollPane scroll = new JScrollPane ( display );
 	    scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
@@ -95,14 +95,7 @@ public class UserInterface {
 				Color.black, 0.75f) {
 			@Override
 			boolean wordTyped(String typedWord) {
-				// create list for dictionary this in your case might be done
-								/*
-				 * words.add("গত"); words.add("জুলাই"); words.add("মাসে");
-				 * words.add("চীনে"); words.add("নিখোঁজ"); words.add("হন");
-				 * words.add("অভিনেত্রী"); words.add("ফান");
-				 * words.add(" বিংবিং"); words.add("সড়ক"); words.add("পরিবহন");
-				 * words.add("সবচেয়ে"); words.add("বিষয়ে");
-				 */
+				
 
 				words.add("heritage");
 				words.add("happiness");
@@ -129,6 +122,9 @@ public class UserInterface {
 	        @Override
 	        public void keyPressed(KeyEvent e) {
 	        	display.setText(display.getText()+"\n" + textField.getText());
+	        	autoSuggestor.dictionary = new ArrayList<>();
+	        	autoSuggestor.dictionary.add("Atiq");
+	        	
 	        }
 
 	    });

@@ -26,7 +26,7 @@ public class AutoSuggestor {
 	private JPanel suggestionsPanel;
 	private JWindow autoSuggestionPopUpWindow;
 	private String typedWord;
-	private final ArrayList<String> dictionary = new ArrayList<>();
+	public ArrayList<String> dictionary = new ArrayList<>();
 	private int currentIndexOfSpace, tW, tH;
 	private DocumentListener documentListener = new DocumentListener() {
 		@Override
