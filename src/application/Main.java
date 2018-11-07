@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	
 	
+	
 	public static Stage primaryStage;
 	
 	public void start(Stage stage) {
