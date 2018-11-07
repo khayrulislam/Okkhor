@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="720.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OkkhorController">
+<AnchorPane fx:id="okkhorAnchorPane" onMouseClicked="#removeFocus" prefHeight="600.0" prefWidth="720.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OkkhorController">
    <children>
-      <TextField focusTraversable="false" layoutX="38.0" layoutY="84.0" prefHeight="25.0" prefWidth="611.0" styleClass="okkhorTextField">
+      <TextField fx:id="okkhorTf" focusTraversable="false" layoutX="38.0" layoutY="84.0" onAction="#enterKeyAction" prefHeight="25.0" prefWidth="611.0" styleClass="okkhorTextField">
          <font>
             <Font size="16.0" />
          </font></TextField>
