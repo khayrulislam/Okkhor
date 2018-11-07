@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class NormalizerMain {
 
 	private static final String FILENAME = "test.txt";
-	public static final String OUTPUT_FILE = "output_version_001.txt";
+	public static final String OUTPUT_FILE = "output_version_0012.txt";
 	
 	
 	public static void main(String[] args) {
