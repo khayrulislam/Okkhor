@@ -107,7 +107,7 @@ public class UserInterface {
 				//textField.setText(textField.getText()+ "  temp");
 				
 				
-				cursoreFunction();
+				//cursoreFunction();
 				
 				
 				

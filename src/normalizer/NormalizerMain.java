@@ -9,13 +9,14 @@ import java.util.Arrays;
 public class NormalizerMain {
 
 	private static final String FILENAME = "test.txt";
-	public static final String OUTPUT_FILE = "output_version_0012.txt";
+	public static final String OUTPUT_FILE = "output_version_001.txt";
 	
 	
 	public static void main(String[] args) {
 		ArrayList<String> allSantence = new ArrayList<>();
 		ArrayList<String> sentanceWithoutEmptyStrings = new ArrayList<>();
 		Normalizer normalizer = new Normalizer();
+		
 		ArrayList<Character> obj = new ArrayList<Character>(
 			      Arrays.asList('০','১','২','৩','৪','৫','৬','৭','৮','৯','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z', '0', '1', '2', '3', '4', '5', '6', '7', '8','9'));
 		
@@ -38,6 +39,8 @@ public class NormalizerMain {
 		
 		
 		for (String string: allSantence) {
+			
+			string=string.replace('?', '।');
 			string=string.replace("-","");
 			string=string.replace(".","");
 			string=string.replace(":","");
@@ -63,6 +66,8 @@ public class NormalizerMain {
 			for(Character ch: obj) {
 				string=string.replace(ch,' ');
 			}
+			
+			
 			
 			if(normalizer.notBlankLine(string)) {
 				sentanceWithoutEmptyStrings.add(string);
