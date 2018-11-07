@@ -1,127 +1,32 @@
-package UITest;
+package userInterface;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JWindow;
 import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class Test {
 
-	private Font banglaFont = new Font("Kalpurush", Font.PLAIN, 16);
-	private JFrame frame = new JFrame();
-	private JTextField f = new JTextField(50);
-	public static ArrayList<String> words = new ArrayList<>();
-	private String FILENAME = "test2.txt";
 
-	public Test() {
-
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setFont(banglaFont);
-
-		AutoSuggestor autoSuggestor = new AutoSuggestor(f, frame, null, Color.WHITE.brighter(), Color.black,
-				Color.black, 0.75f) {
-			@Override
-			boolean wordTyped(String typedWord) {
-				// create list for dictionary this in your case might be done
-								/*
-				 * words.add("গত"); words.add("জুলাই"); words.add("মাসে");
-				 * words.add("চীনে"); words.add("নিখোঁজ"); words.add("হন");
-				 * words.add("অভিনেত্রী"); words.add("ফান");
-				 * words.add(" বিংবিং"); words.add("সড়ক"); words.add("পরিবহন");
-				 * words.add("সবচেয়ে"); words.add("বিষয়ে");
-				 */
-
-				words.add("heritage");
-				words.add("happiness");
-				words.add("goodbye");
-				words.add("cruel");
-				words.add("car");
-				words.add("war");
-				words.add("will");
-				words.add("world");
-				words.add("wall");
-				setDictionary(words);
-				// addToDictionary("bye");//adds a single word
-				return super.wordTyped(typedWord);// now call super to check for
-													// any matches against
-													// newest dictionary
-			}
-		};
-		JPanel p = new JPanel();
-		p.add(f);
-		frame.add(p);
-		frame.pack();
-		frame.setVisible(true);
-	}
-
-	public void run() {
-
-		testing();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-	}
-
-	private void testing() {
-
-		/*
-		 * words.add("গত"); words.add("জুলাই"); words.add("মাসে");
-		 * words.add("চীনে"); words.add("নিখোঁজ"); words.add("হন");
-		 * words.add("অভিনেত্রী"); words.add("ফান"); words.add(" বিংবিং");
-		 * words.add("সড়ক"); words.add("পরিবহন"); words.add("সবচেয়ে");
-		 * words.add("বিষয়ে");
-		 * 
-		 */
-
-		// ArrayList<String> allSantence = new ArrayList<>();
-
-		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
-
-			String sCurrentLine;
-
-			while ((sCurrentLine = br.readLine()) != null) {
-				// String temp[] = sCurrentLine.split('।');
-				// System.out.println(sCurrentLine);
-				words.add(sCurrentLine);
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		for (int i = 0; i < words.size(); i++)
-			System.out.println(words.get(i));
-
-	}
-}
-
-class AutoSuggestor {
+public class AutoSuggestor {
 	private final JTextField textField;
 	private final Window container;
 	private JPanel suggestionsPanel;
 	private JWindow autoSuggestionPopUpWindow;
 	private String typedWord;
-	private final ArrayList<String> dictionary = new ArrayList<>();
+	public ArrayList<String> dictionary = new ArrayList<>();
 	private int currentIndexOfSpace, tW, tH;
 	private DocumentListener documentListener = new DocumentListener() {
 		@Override
@@ -256,12 +161,9 @@ class AutoSuggestor {
 
 	private void checkForAndShowSuggestions() {
 		typedWord = getCurrentlyTypedWord();
-		suggestionsPanel.removeAll();
-		
-		//System.out.println("hlkdjlkafjsdlkf");
-
-		Test.words.remove(Test.words.size()-1);
-		Test.words.add("আতিক");
+		suggestionsPanel.removeAll();// remove previos words/jlabels that were
+										// added
+		// used to calcualte size of JWindow as new Jlabels are added
 		tW = 0;
 		tH = 0;
 		boolean added = wordTyped(typedWord);
@@ -378,73 +280,5 @@ class AutoSuggestor {
 			}
 		}
 		return suggestionAdded;
-	}
-}
-
-class SuggestionLabel extends JLabel {
-	private boolean focused = false;
-	private final JWindow autoSuggestionsPopUpWindow;
-	private final JTextField textField;
-	private final AutoSuggestor autoSuggestor;
-	private Color suggestionsTextColor, suggestionBorderColor;
-
-	public SuggestionLabel(String string, final Color borderColor, Color suggestionsTextColor,
-			AutoSuggestor autoSuggestor) {
-		super(string);
-
-		Font banglaFont = new Font("Kalpurush", Font.PLAIN, 16);
-		// jEditorPane1.setFont(banglaFont);
-		this.setFont(banglaFont);
-
-		this.suggestionsTextColor = suggestionsTextColor;
-		this.autoSuggestor = autoSuggestor;
-		this.textField = autoSuggestor.getTextField();
-		this.suggestionBorderColor = borderColor;
-		this.autoSuggestionsPopUpWindow = autoSuggestor.getAutoSuggestionPopUpWindow();
-		initComponent();
-	}
-
-	private void initComponent() {
-		setFocusable(true);
-		setForeground(suggestionsTextColor);
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent me) {
-				super.mouseClicked(me);
-				replaceWithSuggestedText();
-				autoSuggestionsPopUpWindow.setVisible(false);
-			}
-		});
-		getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), "Enter released");
-		getActionMap().put("Enter released", new AbstractAction() {
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				replaceWithSuggestedText();
-				autoSuggestionsPopUpWindow.setVisible(false);
-			}
-		});
-	}
-
-	public void setFocused(boolean focused) {
-		if (focused) {
-			setBorder(new LineBorder(suggestionBorderColor));
-		} else {
-			setBorder(null);
-		}
-		repaint();
-		this.focused = focused;
-	}
-
-	public boolean isFocused() {
-		return focused;
-	}
-
-	private void replaceWithSuggestedText() {
-		String suggestedWord = getText();
-		String text = textField.getText();
-		String typedWord = autoSuggestor.getCurrentlyTypedWord();
-		String t = text.substring(0, text.lastIndexOf(typedWord));
-		String tmp = t + text.substring(text.lastIndexOf(typedWord)).replace(typedWord, suggestedWord);
-		textField.setText(tmp + " ");
 	}
 }
