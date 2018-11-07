@@ -56,6 +56,8 @@ public class NormalizerMain {
 			string=string.replace("*"," ");
 			string=string.replace(")"," ");
 			string=string.replace("("," ");
+			string=string.replace("(","।");
+			string=string.replace(";","।");
 			
 			string=string.replace("…","");
 			

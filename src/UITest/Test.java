@@ -32,7 +32,7 @@ public class Test {
 	private JFrame frame = new JFrame();
 	private JTextField f = new JTextField(50);
 	public static ArrayList<String> words = new ArrayList<>();
-	private String FILENAME = "test2.txt";
+	private String FILENAME = "myOutput.txt";
 
 	public Test() {
 

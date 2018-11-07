@@ -103,15 +103,6 @@ public class UserInterface {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				display.setText(display.getText() + "\n" + textField.getText());
-				
-				//textField.setText(textField.getText()+ "  temp");
-				
-				
-				//cursoreFunction();
-				
-				
-				
-
 			}
 
 		});
