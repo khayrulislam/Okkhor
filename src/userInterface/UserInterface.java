@@ -29,7 +29,9 @@ public class UserInterface {
 	private ArrayList<String> words;
 	private String FILENAME = "test2.txt";
 	private static Font banglaFont = new Font("Kalpurush", Font.PLAIN, 16);
-
+	private JTextArea display;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -73,7 +75,7 @@ public class UserInterface {
 		panel.setBounds(10, 97, 579, 502);
 
 		panel.setBorder(new TitledBorder(new EtchedBorder(), "Information"));
-		JTextArea display = new JTextArea(18, 44);
+		display = new JTextArea(18, 44);
 		display.setEditable(false); // set textArea non-editable
 		display.setFont(banglaFont);
 		JScrollPane scroll = new JScrollPane(display);
@@ -99,10 +101,16 @@ public class UserInterface {
 
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				display.setText(display.getText() + "\n" + textField.getText());
-				autoSuggestor.dictionary = new ArrayList<>();
-				autoSuggestor.dictionary.add("Atiq");
+				
+				//textField.setText(textField.getText()+ "  temp");
+				
+				
+				cursoreFunction();
+				
+				
+				
 
 			}
 
@@ -128,4 +136,13 @@ public class UserInterface {
 		words.add("atiq");
 
 	}
+	
+	private void cursoreFunction() {
+		int currentPosition = textField.getCaretPosition();
+		display.setText(display.getText()+"\n"+ currentPosition);
+		textField.setCaretPosition(2);
+		
+	}
+	
+
 }

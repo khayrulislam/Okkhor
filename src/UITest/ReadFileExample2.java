@@ -74,5 +74,4 @@ ArrayList<String> allSantence4 = new ArrayList<>();
 		System.out.println(allSantence4.size());
 		System.out.println(st.size());
 	}
-
 }
