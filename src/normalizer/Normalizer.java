@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import fileManager.FileReadWriter;
 import utilities.Utilities;
@@ -21,6 +23,7 @@ public class Normalizer {
 	private ArrayList<String> linesWithoutEmptyStrings;
 	private ArrayList<String> linesWithoutUnwantedCharacters;
 	private ArrayList<String> allSentences;
+	private ArrayList<String> allWords;
 	
 	public void normalize() {
 		allInputedLines = Utilities.READ_WRITE.readStringsFromFile(Utilities.INPUT_FILE_NAME);
@@ -34,24 +37,55 @@ public class Normalizer {
 		linesWithoutEmptyStrings.clear();
 		
 		allSentences = getSentances(linesWithoutUnwantedCharacters);
-
+		allWords = getWords(allSentences);
+		Set<String> set = new HashSet<>(allWords);
 		
-		Utilities.READ_WRITE.writeOutput(allSentences, Utilities.OUTPUT_FILE_NAME);
+		System.out.println(allWords.size());
+		System.out.println(set.size());
+		
+		
+		/*
+		ArrayList<String> temp = new ArrayList<>();
+		for(String str: allSentences)
+			temp.add("|" + str+"|");
+		*/
+		Utilities.READ_WRITE.writeOutput(allWords, Utilities.OUTPUT_FILE_NAME);
 		//System.out.println("file writing completed");
 
 		
 
 	}
 
+	
+
+	private ArrayList<String> getWords(ArrayList<String> allSentences2) {
+		ArrayList<String> splitedWordList = spliter(allSentences2, " ");
+		ArrayList<String> wordList = new ArrayList<>();
+		
+		for(String str: splitedWordList) {
+			if(notBlankLine(str)) {
+				String temp = str.trim();
+				wordList.add(temp);
+			}
+		}
+		
+		
+		return wordList;
+	}
+
+
+
 	private ArrayList<String> getSentances(ArrayList<String> linesWithoutUnwantedCharacters2) {
 		
 		ArrayList<String> splitedSentances = spliter(linesWithoutUnwantedCharacters2, "।");
 		ArrayList<String> allSantences = new ArrayList<>();
 		
-		for(String str: splitedSentances)
-			if(notBlankLine(str))
-				allSantences.add(str);
-		
+		for(String str: splitedSentances) {
+			if(notBlankLine(str)) {
+				String temp = str.trim();
+				allSantences.add(temp);
+			}
+		}
 		splitedSentances.clear();
 		
 		return allSantences;
