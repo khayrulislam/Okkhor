@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import dataPackage.Sentence;
 import fileManager.FileReadWriter;
 import utilities.Utilities;
 
@@ -24,6 +25,8 @@ public class Normalizer {
 	private ArrayList<String> linesWithoutUnwantedCharacters;
 	private ArrayList<String> allSentences;
 	private ArrayList<String> allWords;
+	private ArrayList<Sentence> sentenceList;
+	private ArrayList<String> output;
 	
 	public void normalize() {
 		allInputedLines = Utilities.READ_WRITE.readStringsFromFile(Utilities.INPUT_FILE_NAME);
@@ -35,28 +38,64 @@ public class Normalizer {
 		
 		linesWithoutUnwantedCharacters = changeUnespectedCharacters();
 		linesWithoutEmptyStrings.clear();
-		
 		allSentences = getSentances(linesWithoutUnwantedCharacters);
-		allWords = getWords(allSentences);
-		Set<String> set = new HashSet<>(allWords);
 		
-		System.out.println(allWords.size());
-		System.out.println(set.size());
+		sentenceList = getSentenceList(allSentences);
+		allSentences.clear();
 		
-		
-		/*
-		ArrayList<String> temp = new ArrayList<>();
-		for(String str: allSentences)
-			temp.add("|" + str+"|");
-		*/
-		Utilities.READ_WRITE.writeOutput(allWords, Utilities.OUTPUT_FILE_NAME);
-		//System.out.println("file writing completed");
-
-		
-
+		writeSentancesInfile();
+		writeWordsInfile();
+		//Utilities.READ_WRITE.writeOutput(allSentences, Utilities.OUTPUT_FILE_NAME);
 	}
 
 	
+
+	private void writeWordsInfile() {
+		output = new ArrayList<>();
+		for(Sentence sentence: sentenceList) 
+			for(String word: sentence.words) 
+				output.add(word);
+		
+		Utilities.READ_WRITE.writeOutput(output, Utilities.WORD_FILE_NAME);
+	}
+
+
+
+	private void writeSentancesInfile() {
+		output = new ArrayList<>();
+		for(Sentence sentence: sentenceList) {
+			int n = sentence.words.size();
+			String out = sentence.words.get(0);
+			for(int i = 1; i < n; i++) {
+				out = out + " " + sentence.words.get(i);
+			}
+			output.add(out);
+		}
+		
+		Utilities.READ_WRITE.writeOutput(output, Utilities.SENTENCE_FILE_NAME);
+	}
+
+
+
+	public ArrayList<Sentence> getSentenceList(ArrayList<String> allSentences2) {
+		ArrayList<Sentence> sentenceses= new ArrayList<>();
+
+		for(String str: allSentences2) {
+			ArrayList<String> words = new ArrayList<>();
+			String[] tempList = str.split(" ");
+			for(String tempWords: tempList) {
+				if(notBlankLine(tempWords)) {
+					String tw = tempWords.trim();
+					words.add(tw);
+				}
+			}
+			sentenceses.add(new Sentence(words));
+		}
+		
+		return sentenceses;
+	}
+
+
 
 	private ArrayList<String> getWords(ArrayList<String> allSentences2) {
 		ArrayList<String> splitedWordList = spliter(allSentences2, " ");
