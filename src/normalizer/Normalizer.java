@@ -20,24 +20,53 @@ public class Normalizer {
 	private ArrayList<String> allInputedLines;
 	private ArrayList<String> linesWithoutEmptyStrings;
 	private ArrayList<String> linesWithoutUnwantedCharacters;
-
+	private ArrayList<String> allSentences;
+	
 	public void normalize() {
 		allInputedLines = Utilities.READ_WRITE.readStringsFromFile(Utilities.INPUT_FILE_NAME);
 		System.out.println("Size of all inputed santences = " + allInputedLines.size());
+		
 		linesWithoutEmptyStrings = getLinesWithoutEmptyString(allInputedLines);
 		allInputedLines.clear();
 		System.out.println("Size of all lines = " + linesWithoutEmptyStrings.size());
-
 		
 		linesWithoutUnwantedCharacters = changeUnespectedCharacters();
+		linesWithoutEmptyStrings.clear();
 		
+		allSentences = getSentances(linesWithoutUnwantedCharacters);
 
 		
-		Utilities.READ_WRITE.writeOutput(linesWithoutUnwantedCharacters, Utilities.OUTPUT_FILE_NAME);
-		System.out.println("file writing completed");
+		Utilities.READ_WRITE.writeOutput(allSentences, Utilities.OUTPUT_FILE_NAME);
+		//System.out.println("file writing completed");
 
 		
 
+	}
+
+	private ArrayList<String> getSentances(ArrayList<String> linesWithoutUnwantedCharacters2) {
+		
+		ArrayList<String> splitedSentances = spliter(linesWithoutUnwantedCharacters2, "।");
+		ArrayList<String> allSantences = new ArrayList<>();
+		
+		for(String str: splitedSentances)
+			if(notBlankLine(str))
+				allSantences.add(str);
+		
+		splitedSentances.clear();
+		
+		return allSantences;
+	}
+	
+	private static ArrayList<String> spliter(ArrayList<String> sentence, String splitr) {
+		ArrayList<String> newSetnence = new ArrayList<>();
+
+		for (String str : sentence) {
+			String [] splitedSentences = str.split(splitr);
+			for(String miniSantence: splitedSentences)
+				newSetnence.add(miniSantence);
+		}
+
+		return newSetnence;
 	}
 
 	private ArrayList<String> changeUnespectedCharacters() {
@@ -79,7 +108,8 @@ public class Normalizer {
 			string = string.replace("!", "।"); 
 			string = string.replace("–", " "); 
 			string = string.replace("%", " "); 
-
+			string = string.replace(",", "।"); 
+			
 			string = string.replace("Kaljoyee", "");
 
 			for (Character ch : obj) {
