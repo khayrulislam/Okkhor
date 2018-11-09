@@ -3,7 +3,7 @@
 >>>>>>>=master
 eclipse.preferences.version=1
 encoding//src/UITest/Test.java=UTF-8
-encoding//src/normalizer/NormalizerMain.java=UTF-8
+encoding//src/normalizer/Normalizer.java=UTF-8
 encoding//src/normalizer/SentenceIdentifier.java=UTF-8
 encoding//src/userInterface/UserInterface.java=UTF-8
 encoding/output.txt=UTF-8
