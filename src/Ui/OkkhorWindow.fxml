@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="okkhorAnchorPane" onMouseClicked="#removeFocus" prefHeight="600.0" prefWidth="720.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OkkhorController">
+<AnchorPane fx:id="okkhorAnchorPane" onKeyPressed="#changeSuggestionItemOnKey" onMouseClicked="#removeFocus" prefHeight="600.0" prefWidth="720.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OkkhorController">
    <children>
       <TextField fx:id="okkhorTf" focusTraversable="false" layoutX="38.0" layoutY="84.0" onAction="#enterKeyAction" prefHeight="35.0" prefWidth="600.0" styleClass="okkhorTextField">
          <font>
