@@ -4,11 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="okkhorAnchorPane" onMouseClicked="#removeFocus" prefHeight="600.0" prefWidth="720.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OkkhorController">
    <children>
-      <TextField fx:id="okkhorTf" focusTraversable="false" layoutX="38.0" layoutY="84.0" onAction="#enterKeyAction" prefHeight="25.0" prefWidth="611.0" styleClass="okkhorTextField">
+      <TextField fx:id="okkhorTf" focusTraversable="false" layoutX="38.0" layoutY="84.0" onAction="#enterKeyAction" prefHeight="35.0" prefWidth="600.0" styleClass="okkhorTextField">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -26,5 +27,7 @@
          </children>
       </AnchorPane>
       <Button fx:id="logOutBt" layoutX="654.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#logOut" text="প্রস্থান" />
+      <VBox fx:id="okkhorSuggestionVb" layoutX="38.0" layoutY="121.0" prefHeight="0.0" prefWidth="600.0" styleClass="okkhorSuggestionVb" />
+      <Button layoutX="256.0" layoutY="260.0" mnemonicParsing="false" onAction="#ff" text="Button" />
    </children>
 </AnchorPane>
