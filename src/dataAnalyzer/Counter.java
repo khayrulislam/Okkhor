@@ -57,7 +57,7 @@ public class Counter {
 			};
 			
 			//Arrays.sort(selected, lengthComparator);
-			Collections.sort(selected, lengthComparator);
+			
 			System.out.println("অনুমান ********");
 			System.out.println("________________________");
 			
