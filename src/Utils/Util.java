@@ -23,7 +23,7 @@ public class Util {
 	
 	public static final String DEFAULT = "default";
 	
-	
+	public static final int NUMBER_OF_LATTER = 26;
 
 	
 	

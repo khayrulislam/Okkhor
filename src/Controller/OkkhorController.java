@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import Ai.DataTrie;
 import CurrentStatus.UserStatus;
 import Utils.Util;
 import javafx.event.ActionEvent;
@@ -24,7 +25,7 @@ import javafx.scene.layout.VBox;
 public class OkkhorController extends WindowTransition implements Initializable {
 	
 	@FXML
-	AnchorPane okkhorAnchorPane;
+	AnchorPane okkhorAnchorPane,oo;
 	
 	@FXML
 	TextField okkhorTf;
@@ -39,6 +40,7 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	
 	private int currentItemNumber=-1,previousItemNumber;
 	
+	private DataTrie dt;
 	
 	public void logOut() {
 		userStatus.setDefaultUserStatus();
@@ -49,8 +51,9 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	public void initialize(URL location, ResourceBundle resources) {
 
 		userStatus = UserStatus.getUserStausInstance();
+		dt = DataTrie.getDateBaseInstance();
 		
-		if(userStatus.getStatus().equals(Util.DEFAULT)) logOutBt.setText("পিছনে");
+		if(userStatus.getStatus().equals(Util.DEFAULT)) logOutBt.setText("পিছনে যান");
 		
 		
 		
@@ -76,13 +79,15 @@ public class OkkhorController extends WindowTransition implements Initializable 
 				updateFocusing(currentItemNumber,previousItemNumber);
 			}
 			
-			else if (keyEvent.getCode() == KeyCode.ENTER) {
+			/*else if (keyEvent.getCode() == KeyCode.ENTER) {
 				System.out.println("in");
 				Label label = (Label) okkhorSuggestionVb.getChildren().get(currentItemNumber);
 				okkhorTf.setText(label.getText());
+				//okkhorTf.requestFocus();
+				//okkhorTf.end();
 				okkhorSuggestionVb.getChildren().clear();
-				currentItemNumber = 1;
-			}
+				currentItemNumber = -1;
+			}*/
 		}	
 	}
 	
@@ -91,6 +96,7 @@ public class OkkhorController extends WindowTransition implements Initializable 
 
 		Label label = (Label) okkhorSuggestionVb.getChildren().get(currentItemNumber);
 		label.setId("okkhorSuggestionLabelFocused");
+		okkhorTf.setText(label.getText());
 		
 		if(previousItemNumber>-1) {
 			Label label2 = (Label) okkhorSuggestionVb.getChildren().get(previousItemNumber);
@@ -98,10 +104,11 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		}
 	}
 
-	private void createSuggestionList() {
+	private void createSuggestionList(ArrayList<String> list) {
 		
-		ArrayList<String> list = new ArrayList<>(Arrays.asList("olife ddddddddddddddddddddddddd","atiq","jamil","thamid","jubair"));
+		//ArrayList<String> list = new ArrayList<>(Arrays.asList("olife ddddddddddddddddddddddddd","atiq","jamil","thamid","jubair"));
 		
+		okkhorSuggestionVb.getChildren().clear();
 		for(int i=0;i<list.size();i++) okkhorSuggestionVb.getChildren().add(getASuggestionItem(list.get(i)));
 			
 	}
@@ -136,6 +143,8 @@ public class OkkhorController extends WindowTransition implements Initializable 
 				// TODO Auto-generated method stub
 				currentItemNumber = -1;
 				okkhorTf.setText(label.getText());
+				okkhorTf.requestFocus();
+				okkhorTf.end();
 				okkhorSuggestionVb.getChildren().clear();
 			}
 		});
@@ -143,23 +152,57 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		return label;
 	}
 	
+	public void startSuggestion(KeyEvent keyEvent) {
+		//okkhorSuggestionVb.getChildren().clear();
+		if(!okkhorTf.getText().equals("")  && keyEvent.getCode()!=KeyCode.UP && keyEvent.getCode()!= KeyCode.DOWN) {
+
+			System.out.println(okkhorTf.getText());
+			ArrayList< String > arrayList = dt.getSuggestionList(okkhorTf.getText());
+			
+			if(arrayList!=null) {
+
+				//for(int i=0;i<arrayList.size();i++) System.out.println(arrayList.get(i));
+				
+				createSuggestionList(arrayList);
+			}
+			else okkhorSuggestionVb.getChildren().clear();
+		}
+
+		
+		
+		
+	}
+	
 	
 	public void ff(ActionEvent event) {
-		createSuggestionList();
+		//createSuggestionList();
 	}
 	
 	
 	public void enterKeyAction(ActionEvent event) {
 		
-		okkhorAnchorPane.requestFocus();
-		// TODO store
-		System.out.println("out");
-		okkhorTf.clear();
+		if(okkhorSuggestionVb.getChildren().size()>0) {
+			System.out.println("in");
+			Label label = (Label) okkhorSuggestionVb.getChildren().get(currentItemNumber);
+			okkhorTf.setText(label.getText());
+			okkhorTf.requestFocus();
+			okkhorTf.end();
+			okkhorSuggestionVb.getChildren().clear();
+			currentItemNumber = -1;
+		}
+		
+		else {
+			okkhorAnchorPane.requestFocus();
+			// TODO store
+			System.out.println("out");
+			okkhorTf.clear();
+		}
+		
 		
 	}
 	
 	public void removeFocus(MouseEvent event) {
-		okkhorAnchorPane.requestFocus();
+		//oo.requestFocus();
 	}
 
 }

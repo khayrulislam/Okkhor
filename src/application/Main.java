@@ -1,6 +1,9 @@
 package application;
 	
 
+import java.util.ArrayList;
+
+import Ai.DataTrie;
 import Utils.Util;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +33,28 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		
+		Thread thread = new Thread(){
+		    public void run(){
+		    	DataTrie dt = DataTrie.getDateBaseInstance();
+				dt.builtTrie();
+				System.out.println("done");
+		    }
+		};
+	
+		thread.start();
+		
+		
 		launch(args);
+		
+		
+		/*
+		
+		ArrayList< String > arrayList = dt.getSuggestionList("c");
+		
+		for(int i=0;i<arrayList.size();i++) System.out.println(arrayList.get(i));
+		*/
+		
 		
 		//DataBaseConnection dbc = new DataBaseConnection();
 		//dbc.createNewDatabase();
