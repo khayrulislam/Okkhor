@@ -1,6 +1,16 @@
 package application;
 	
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 
 import Ai.WordTrie;
@@ -33,8 +43,72 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+	
 		
-		Thread thread = new Thread(){
+		String dot1 = "য়";
+		
+		String dot2 = "ব়";
+		
+		String dot3 = "ড়";
+		
+		String dot4 = "ঢ়";
+		
+		String original1 = "য়";
+		
+		String original2 = "র";
+				
+		String original3 = "ড়";
+				
+		String original4 = "ঢ়";
+		
+		
+		String dot = "য় ব় ড় ঢ় ";
+		
+		String original = "য়  র ড় ঢ়";
+		
+		
+		String word,word1;
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(new File("test.txt")));
+			Writer writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream("banglaData2.txt"), "utf-8"));
+			//BufferedWriter bw = new BufferedWriter(new FileWriter(new File("banglaData2.txt","UTF-8")));
+			while ( (word = br.readLine() )!= null) {
+				
+				word1 = word.replaceAll(dot1, original1);
+				word = word1.replaceAll(dot2, original2);
+				word1 = word.replaceAll(dot3, original3);
+				word = word1.replaceAll(dot4, original4);
+				writer.write(word+"\n");
+				System.out.println(word);
+			}
+			writer.close();	
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+/*		Thread thread = new Thread(){
 		    public void run(){
 		    	WordTrie dt = WordTrie.getDateBaseInstance();
 				dt.builtTrie();
@@ -43,17 +117,9 @@ public class Main extends Application {
 		};
 	
 		thread.start();
+
+		launch(args);*/
 		
-		
-		launch(args);
-		
-		
-		/*
-		
-		ArrayList< String > arrayList = dt.getSuggestionList("c");
-		
-		for(int i=0;i<arrayList.size();i++) System.out.println(arrayList.get(i));
-		*/
 		
 		
 		//DataBaseConnection dbc = new DataBaseConnection();
