@@ -14,9 +14,11 @@ public class Utilities {
 	public static String OUTPUT_FILE_NAME = "output.txt";
 	public static String INPUT_FILE_NAME = "input.txt";
 	
+	public static int MAX_GRAM = 5;
+	
 	
 	public static ArrayList<String> GRAM_FILENAME = 
-			new ArrayList<>(Arrays.asList("g1.txt", "g2.txt", "g3.txt", "g4.txt", "g5.txt", "g6.txt"));
+			new ArrayList<>(Arrays.asList("g0.txt", "g1.txt", "g2.txt", "g3.txt", "g4.txt", "g5.txt", "g6.txt"));
 	
 	public static java.util.Scanner SCANNER = new java.util.Scanner(System.in);
 	public static FileReadWriter READ_WRITE = new FileReadWriter();

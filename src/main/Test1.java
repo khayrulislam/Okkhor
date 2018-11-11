@@ -19,6 +19,11 @@ public class Test1 {
 		//new N_Gram().test2();
 		//Utilities.READ_WRITE.appendInFile("ap.txt", "ok");
 	
+		//Utilities.GRAM_CONVERTER.convertAndWrite("a b c d e f g h");
+		
+		new N_Gram().test2();
+		
+		
 		
 		//for(String str: Utilities.GRAM_FILENAME)
 		//	System.out.println(str);

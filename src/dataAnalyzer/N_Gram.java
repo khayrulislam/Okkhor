@@ -67,14 +67,27 @@ public class N_Gram {
 	}
 	
 	
+	
+	public void test3() {
+		ArrayList<String> all = Utilities.READ_WRITE.readStringsFromFile(Utilities.SENTENCE_FILE_NAME);
+		for(String string: all)
+			Utilities.GRAM_CONVERTER.convertAndWrite(string);
+		System.out.println("Done");
+	}
+	
+	
+	
 	public void test2() {
 		ArrayList<String> all = Utilities.READ_WRITE.readStringsFromFile(Utilities.SENTENCE_FILE_NAME);
 		//ArrayList<Sentence> next = new ArrayList<>();
 		
 		ArrayList<ArrayList<Sentence>> Gram = new ArrayList<>();
+		ArrayList<ArrayList<String>> StrGram = new ArrayList<>();
 		for(int i = 0; i < 7; i++) {
 			ArrayList<Sentence> t1 = new ArrayList<>();
+			ArrayList<String> t2 = new ArrayList<>();
 			Gram.add(t1);
+			StrGram.add(t2);
 		}
 		
 		
@@ -90,28 +103,44 @@ public class N_Gram {
 			
 			
 			for(String str: all) {
-				System.out.println(n+"----");
+				//System.out.println(n+"----");
 				String [] splited = str.split(" ");
 				for(int i = 0; i < splited.length - n +1; i++) {
 					ArrayList<String> words = new ArrayList<>();
 					Sentence sentence = new Sentence(words);
+					
+					String temp = splited[0];
+					
 					int maxi = Math.min(splited.length, i+n);
+					
+					
 					for(int j = i; j < maxi; j++) {
 						sentence.words.add(splited[j]);
 					}
+					
+					for(int j = 1; j < maxi; j++)
+						temp = temp + " "+ splited[j];
+					
 					Gram.get(n).add(sentence);
+					StrGram.get(n).add(str);
 					//next.add(sentence);
 				}
 				
-				System.out.println("s " + Gram.get(n).size());
+				//System.out.println("s " + Gram.get(n).size());
 			}
 			
 			System.out.println("Processing");
 			
 		}
 		
+		
+		for(int i = 2; i <= Utilities.MAX_GRAM; i++) {
+			Utilities.READ_WRITE.writeOutput(StrGram.get(i), Utilities.GRAM_FILENAME.get(i));
+			System.out.println("completed");
+		}
+		
 		String line = null;
-		/*
+		
 		while(true) {
 			int count = 1;
 			ArrayList<String> typed = new ArrayList<>();
@@ -152,7 +181,7 @@ public class N_Gram {
 				
 				count++;
 			}
-		}*/
+		}
 			
 	}
 }
