@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import Ai.WordTrie;
 import CurrentStatus.UserStatus;
 import Utils.Util;
+import Validation.InputTextNormalize;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -42,6 +43,7 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	
 	private WordTrie dt;
 	
+	
 	public void logOut() {
 		userStatus.setDefaultUserStatus();
 		loadWindow(Util.SIGN_IN_FXML);
@@ -53,13 +55,14 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		userStatus = UserStatus.getUserStausInstance();
 		dt = WordTrie.getDateBaseInstance();
 		
+		
 		if(userStatus.getStatus().equals(Util.DEFAULT)) logOutBt.setText("পিছনে যান");
 		
 		
 		
 	}
 	
-	public void changeSuggestionItemOnKey(KeyEvent keyEvent) {
+	public void changeSuggestionItemUsingUpDownKey(KeyEvent keyEvent) {
 		
 		if(okkhorSuggestionVb.getChildren().size()>0) {
 
@@ -67,32 +70,21 @@ public class OkkhorController extends WindowTransition implements Initializable 
 				
 				previousItemNumber = currentItemNumber;
 				currentItemNumber+=okkhorSuggestionVb.getChildren().size()+1;
-				currentItemNumber %= okkhorSuggestionVb.getChildren().size();
-				updateFocusing(currentItemNumber,previousItemNumber);	
+				currentItemNumber%= okkhorSuggestionVb.getChildren().size();
+				changeFocusedSuggestionItem();	
 			}
-			
 			else if (keyEvent.getCode() == KeyCode.UP) {
 				
 				previousItemNumber = currentItemNumber;
 				currentItemNumber+=okkhorSuggestionVb.getChildren().size()-1;
-				currentItemNumber %= okkhorSuggestionVb.getChildren().size();
-				updateFocusing(currentItemNumber,previousItemNumber);
+				currentItemNumber%= okkhorSuggestionVb.getChildren().size();
+				changeFocusedSuggestionItem();
 			}
-			
-			/*else if (keyEvent.getCode() == KeyCode.ENTER) {
-				System.out.println("in");
-				Label label = (Label) okkhorSuggestionVb.getChildren().get(currentItemNumber);
-				okkhorTf.setText(label.getText());
-				//okkhorTf.requestFocus();
-				//okkhorTf.end();
-				okkhorSuggestionVb.getChildren().clear();
-				currentItemNumber = -1;
-			}*/
 		}	
 	}
 	
 	
-	private void updateFocusing(int currentItemNumber2, int previousItemNumber2) {
+	private void changeFocusedSuggestionItem() {
 
 		Label label = (Label) okkhorSuggestionVb.getChildren().get(currentItemNumber);
 		label.setId("okkhorSuggestionLabelFocused");
@@ -104,12 +96,10 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		}
 	}
 
-	private void createSuggestionList(ArrayList<String> list) {
-		
-		//ArrayList<String> list = new ArrayList<>(Arrays.asList("olife ddddddddddddddddddddddddd","atiq","jamil","thamid","jubair"));
-		
+	private void createSuggestionList(String previous, ArrayList<String> list) {
+				
 		okkhorSuggestionVb.getChildren().clear();
-		for(int i=0;i<list.size();i++) okkhorSuggestionVb.getChildren().add(getASuggestionItem(list.get(i)));
+		for(int i=0;i<Math.min(10, list.size());i++) okkhorSuggestionVb.getChildren().add(getASuggestionItem(previous+list.get(i)));
 			
 	}
 	
@@ -156,20 +146,24 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		//okkhorSuggestionVb.getChildren().clear();
 		if(!okkhorTf.getText().equals("")  && keyEvent.getCode()!=KeyCode.UP && keyEvent.getCode()!= KeyCode.DOWN) {
 
-			System.out.println(okkhorTf.getText());
-			ArrayList< String > arrayList = dt.getSuggestionList(okkhorTf.getText());
+			
+			InputTextNormalize itn = new InputTextNormalize();
+			itn.normalizeText(okkhorTf.getText());
+			
+			//System.out.println(itn.getPreviousText()+"-------------"+itn.getLastWord());
+			
+			ArrayList< String > arrayList = dt.getSuggestionList(itn.getLastWord());
+			//arrayList.add(0, itn.getPreviousText()+itn.getLastWord());
 			
 			if(arrayList!=null) {
 
 				//for(int i=0;i<arrayList.size();i++) System.out.println(arrayList.get(i));
 				
-				createSuggestionList(arrayList);
+				createSuggestionList(itn.getPreviousText(),arrayList);
 			}
 			else okkhorSuggestionVb.getChildren().clear();
 		}
 
-		
-		
 		
 	}
 	
