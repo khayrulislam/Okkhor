@@ -1,6 +1,8 @@
 package fileManager;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,6 +46,64 @@ public class FileReadWriter {
 		printWriter.close();
 		System.out.println("file wriing completed");
 		
+	}
+	
+	public void appendInFile(String fileName, String textToAppend) {
+		File file = new File(fileName);
+		FileWriter fr = null;
+		try {
+			fr = new FileWriter(file, true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("file not found to append");
+		}
+		BufferedWriter br = new BufferedWriter(fr);
+		PrintWriter pr = new PrintWriter(br);
+		pr.println(textToAppend);
+		pr.close();
+		try {
+			br.close();
+		} catch (IOException e) {
+			System.out.println("Could not close buffer writer");
+			e.printStackTrace();
+		}
+		try {
+			fr.close();
+		} catch (IOException e) {
+			System.out.println("Could not close");
+			e.printStackTrace();
+		}
+	}
+	
+	public void appendInFile(String fileName, ArrayList<String> textListToAppend) {
+		File file = new File(fileName);
+		FileWriter fr = null;
+		try {
+			fr = new FileWriter(file, true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("file not found to append");
+		}
+		BufferedWriter br = new BufferedWriter(fr);
+		PrintWriter pr = new PrintWriter(br);
+		
+		for(String str: textListToAppend) 
+			pr.println(textListToAppend);
+		
+		
+		pr.close();
+		try {
+			br.close();
+		} catch (IOException e) {
+			System.out.println("Could not close buffer writer");
+			e.printStackTrace();
+		}
+		try {
+			fr.close();
+		} catch (IOException e) {
+			System.out.println("Could not close");
+			e.printStackTrace();
+		}
 	}
 
 }

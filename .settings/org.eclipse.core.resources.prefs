@@ -3,9 +3,14 @@
 >>>>>>>=master
 eclipse.preferences.version=1
 encoding//src/UITest/Test.java=UTF-8
+encoding//src/dataAnalyzer/Counter.java=UTF-8
+encoding//src/dataAnalyzer/N_Gram.java=UTF-8
 encoding//src/normalizer/Normalizer.java=UTF-8
 encoding//src/userInterface/UserInterface.java=UTF-8
+encoding/input.txt=UTF-8
+encoding/output.txt=UTF-8
 encoding/output_version_001.txt=UTF-8
+encoding/sentences.txt=UTF-8
 encoding/sntns.txt=UTF-8
 encoding/test.txt=UTF-8
 encoding/words.txt=UTF-8

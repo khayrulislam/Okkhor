@@ -82,11 +82,15 @@ public class N_Gram {
 		
 		int maxGram = 5;
 		
+		System.out.println(Gram.size());
+		
+		
 		for(int n = 2; n <= maxGram; n++) {
 			
 			
 			
 			for(String str: all) {
+				System.out.println(n+"----");
 				String [] splited = str.split(" ");
 				for(int i = 0; i < splited.length - n +1; i++) {
 					ArrayList<String> words = new ArrayList<>();
@@ -98,6 +102,8 @@ public class N_Gram {
 					Gram.get(n).add(sentence);
 					//next.add(sentence);
 				}
+				
+				System.out.println("s " + Gram.get(n).size());
 			}
 			
 			System.out.println("Processing");
@@ -105,7 +111,7 @@ public class N_Gram {
 		}
 		
 		String line = null;
-		
+		/*
 		while(true) {
 			int count = 1;
 			ArrayList<String> typed = new ArrayList<>();
@@ -146,22 +152,7 @@ public class N_Gram {
 				
 				count++;
 			}
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		}*/
+			
 	}
-	
-	
-	
-	
-	
-	
-	
 }
