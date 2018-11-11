@@ -24,6 +24,8 @@ public class Util {
 	public static final String DEFAULT = "default";
 	
 	public static final int NUMBER_OF_LATTER = 26;
+	
+	public static final int NUMBER_OF_SUGGESTION_ITEM_SHOW = 10;
 
 	
 	
