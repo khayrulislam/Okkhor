@@ -2,7 +2,6 @@ package Ai;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,19 +9,19 @@ import java.util.ArrayList;
 import DataObject.WordNode;
 import Utils.Util;
 
-public class DataTrie {
+public class WordTrie {
 
 	private WordNode root;
 	
-	private static DataTrie dt = null;
+	private static WordTrie dt = null;
 	
-	private DataTrie() {}
+	private WordTrie() {}
 	
-	public static DataTrie getDateBaseInstance() {
+	public static WordTrie getDateBaseInstance() {
 		
 		if(dt==null) {
-			synchronized (DataTrie.class) {
-				if(dt==null) dt = new DataTrie();	
+			synchronized (WordTrie.class) {
+				if(dt==null) dt = new WordTrie();	
 			}
 		}
 		return dt;
@@ -30,40 +29,17 @@ public class DataTrie {
 	
 	public void builtTrie() {
 		
+		String word;
 		createRoot();
-		
-		ArrayList<String>  data = new ArrayList<>();
-		
-		FileReader fr;
-		
-		String rr;
-		
 		try {
-			fr = new FileReader(new File("data.txt"));
-			BufferedReader br = new BufferedReader(fr);
-			while ( (rr = br.readLine() )!= null) {
-				//System.out.println(rr.length()); 
-				insertWord(root, rr);
-				//System.out.println(1);
-			}
+			BufferedReader br = new BufferedReader(new FileReader(new File("data.txt")));
+			while ( (word = br.readLine() )!= null) 
+				insertWord(root, word);
+			br.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		data.add("hello");
-		data.add("dog");
-		data.add("hell");
-		data.add("cat");
-		data.add("hel");
-		data.add("help");
-		data.add("helps");
-		data.add("helping");
-		
-		
-		
-		for(int i=0;i<data.size();i++) insertWord(root, data.get(i));
 	}
 	
 	private void createRoot() {
@@ -78,21 +54,12 @@ public class DataTrie {
 		for(int i=0;i<prefix.length();i++) {
 			
 			int index = getIndex(prefix.charAt(i));
-			
 			if(temp.children[index]==null) return null;
-			
 			temp = temp.children[index];
 		}
 		
-		
-		boolean isLast = lastNodeCheck(temp);
-		
-		if(!isLast) {
-			getList(temp,prefix,arrayList);
-		}
-		else {
-			arrayList.add(prefix);
-		}
+		if(!lastNodeCheck(temp))  getList(temp,prefix,arrayList);
+		else arrayList.add(prefix);
 		
 		return arrayList;
 	}
@@ -127,9 +94,7 @@ public class DataTrie {
 		for(int i=0;i<word.length();i++) {
 			
 			int index = getIndex(word.charAt(i));
-			
 			if(temp.children[index]==null) temp.children[index] = new WordNode();
-			
 			temp = temp.children[index];
 		}
 		temp.isTheEnd = true;

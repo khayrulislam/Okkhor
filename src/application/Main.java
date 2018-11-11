@@ -3,7 +3,7 @@ package application;
 
 import java.util.ArrayList;
 
-import Ai.DataTrie;
+import Ai.WordTrie;
 import Utils.Util;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +36,7 @@ public class Main extends Application {
 		
 		Thread thread = new Thread(){
 		    public void run(){
-		    	DataTrie dt = DataTrie.getDateBaseInstance();
+		    	WordTrie dt = WordTrie.getDateBaseInstance();
 				dt.builtTrie();
 				System.out.println("done");
 		    }

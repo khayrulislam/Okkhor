@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-import Ai.DataTrie;
+import Ai.WordTrie;
 import CurrentStatus.UserStatus;
 import Utils.Util;
 import javafx.event.ActionEvent;
@@ -40,7 +40,7 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	
 	private int currentItemNumber=-1,previousItemNumber;
 	
-	private DataTrie dt;
+	private WordTrie dt;
 	
 	public void logOut() {
 		userStatus.setDefaultUserStatus();
@@ -51,7 +51,7 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	public void initialize(URL location, ResourceBundle resources) {
 
 		userStatus = UserStatus.getUserStausInstance();
-		dt = DataTrie.getDateBaseInstance();
+		dt = WordTrie.getDateBaseInstance();
 		
 		if(userStatus.getStatus().equals(Util.DEFAULT)) logOutBt.setText("পিছনে যান");
 		
