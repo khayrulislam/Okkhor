@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import Ai.WordTrie;
 import CurrentStatus.UserStatus;
+import DataObject.Word;
 import Utils.Util;
 import Validation.InputTextNormalize;
 import javafx.event.ActionEvent;
@@ -100,10 +101,10 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		}
 	}
 
-	private void createSuggestionList( ArrayList<String> list) {
+	private void createSuggestionList(String previousText, ArrayList<Word> list) {
 				
 		okkhorSuggestionVb.getChildren().clear();
-		for(int i=0;i<Math.min(10, list.size());i++) okkhorSuggestionVb.getChildren().add(getASuggestionItem(list.get(i)));
+		for(int i=0;i<Math.min(10, list.size());i++) okkhorSuggestionVb.getChildren().add(getASuggestionItem(previousText+list.get(i).getBengaliWord()));
 			
 	}
 	
@@ -153,12 +154,12 @@ public class OkkhorController extends WindowTransition implements Initializable 
 			InputTextNormalize itn = new InputTextNormalize();
 			itn.normalizeText(okkhorTf.getText());
 						
-			ArrayList< String > arrayList = dt.getSuggestionList(itn.getLastWord());
+			ArrayList< Word > arrayList = dt.getSuggestionList(itn.getLastWord());
 			
 			if(arrayList!=null) {
 
-				addPrefix(itn.getPreviousText(), arrayList);								
-				createSuggestionList(arrayList);
+				//addPrefix(itn.getPreviousText(), arrayList);								
+				createSuggestionList(itn.getPreviousText(),arrayList);
 			}
 			else okkhorSuggestionVb.getChildren().clear();
 		}
@@ -166,12 +167,12 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	}
 	
 	
-	private void addPrefix(String previousText, ArrayList<String> arrayList) {
+	/*private void addPrefix(String previousText, ArrayList<Word> arrayList) {
 		
 		for(int i=0;i< Math.min(Util.NUMBER_OF_SUGGESTION_ITEM_SHOW, arrayList.size()) ;i++) {
-			arrayList.set(i, previousText+arrayList.get(i));
+			arrayList.set(i, previousText+arrayList.get(i).getBengaliWord());
 		}
-	}
+	}*/
 
 	public void ff(ActionEvent event) {
 		//createSuggestionList();

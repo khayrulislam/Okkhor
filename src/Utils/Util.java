@@ -23,11 +23,31 @@ public class Util {
 	
 	public static final String DEFAULT = "default";
 	
-	public static final int NUMBER_OF_LATTER = 26;
+	public static final String BANGLE_LETTER = "ৄৠৡৢৣঅআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ০১২৩৪৫৬৭৮৯ািীুূৃেৈোৌ্ৗঽঌৰৱ";
+
+	public static final int NUMBER_OF_LATTER = BANGLE_LETTER.length();
 	
 	public static final int NUMBER_OF_SUGGESTION_ITEM_SHOW = 10;
 
+	public static final String dot1 = "য়";
 	
+	public static final String dot2 = "ব়";
+	
+	public static final String dot3 = "ড়";
+	
+	public static final String dot4 = "ঢ়";
+	
+	public static final String dot5 = "ে";
+	
+	public static final String original1 = "য়";
+	
+	public static final String original2 = "র";
+			
+	public static final String original3 = "ড়";
+			
+	public static final String original4 = "ঢ়";
+	
+	public static final String original5 = "ে";
 	
 	
 	

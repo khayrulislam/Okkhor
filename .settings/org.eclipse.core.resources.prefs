@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/Ai/WordTrie.java=UTF-8
 encoding//src/Controller/OkkhorController.java=UTF-8
+encoding//src/Utils/Util.java=UTF-8
 encoding//src/application/Main.java=UTF-8
 encoding/banglaData.txt=UTF-8
 encoding/banglaData2.txt=UTF-8
 encoding/banglaWord.txt=UTF-8
+encoding/banglaWords.txt=UTF-8
 encoding/test.txt=UTF-8

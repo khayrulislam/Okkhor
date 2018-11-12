@@ -6,6 +6,7 @@ public class WordNode {
 
 	public WordNode [] children = new WordNode[Util.NUMBER_OF_LATTER];
 	public boolean isTheEnd;
+	public int numberOfUse;
 	
 	public WordNode() {
 		this.isTheEnd = false;
