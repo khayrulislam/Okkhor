@@ -6,6 +6,7 @@ import dataAnalyzer.Counter;
 import dataAnalyzer.N_Gram;
 import dataAnalyzer.WordAnalyzer;
 import normalizer.Normalizer;
+import user.User;
 import utilities.Utilities;
 
 public class Test1 {
@@ -23,6 +24,7 @@ public class Test1 {
 		
 		//new N_Gram().test2();
 		
+		Utilities.FACADE.addUser(new User("atiqahammedshamim@gmail.com", "12345"));
 		Utilities.FACADE.process();
 		
 		
