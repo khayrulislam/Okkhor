@@ -118,11 +118,11 @@ public class N_Gram {
 						sentence.words.add(splited[j]);
 					}
 					
-					for(int j = 1; j < maxi; j++)
-						temp = temp + " "+ splited[j];
+					//for(int j = 1; j < maxi; j++)
+					//	temp = temp + " "+ splited[j];
 					
 					Gram.get(n).add(sentence);
-					StrGram.get(n).add(str);
+					//StrGram.get(n).add(temp);
 					//next.add(sentence);
 				}
 				

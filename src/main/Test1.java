@@ -21,8 +21,9 @@ public class Test1 {
 	
 		//Utilities.GRAM_CONVERTER.convertAndWrite("a b c d e f g h");
 		
-		new N_Gram().test2();
+		//new N_Gram().test2();
 		
+		Utilities.FACADE.process();
 		
 		
 		//for(String str: Utilities.GRAM_FILENAME)
