@@ -37,8 +37,6 @@ public class Util {
 	
 	public static final String dot4 = "ঢ়";
 	
-	public static final String dot5 = "ে";
-	
 	public static final String original1 = "য়";
 	
 	public static final String original2 = "র";
@@ -47,7 +45,6 @@ public class Util {
 			
 	public static final String original4 = "ঢ়";
 	
-	public static final String original5 = "ে";
 	
 	
 	
