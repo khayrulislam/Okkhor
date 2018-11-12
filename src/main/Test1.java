@@ -24,7 +24,9 @@ public class Test1 {
 		
 		//new N_Gram().test2();
 		
-		Utilities.FACADE.addUser(new User("atiqahammedshamim@gmail.com", "12345"));
+		
+		//new User("bsse0817@iit.du.ac.bd", "asdfghjkl").addUserInformation();
+		//Utilities.FACADE.addUser(new User("atiqahammedshamim@gmail.com", "12345"));
 		Utilities.FACADE.process();
 		
 		

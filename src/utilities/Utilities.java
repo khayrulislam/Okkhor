@@ -16,6 +16,7 @@ public class Utilities {
 	public static String OUTPUT_FILE_NAME = "output.txt";
 	public static String INPUT_FILE_NAME = "input.txt";
 	public static String USER_INFO_FILE = "user.txt";
+	public static String WORD_MAP_FILE_NAME = "wordMap.txt";
 
 	public static ArrayList<User> ALL_USER = new ArrayList<>();
 	public static ArrayList<String> GRAM_FILENAME = new ArrayList<>(

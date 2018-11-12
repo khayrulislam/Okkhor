@@ -8,6 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import utilities.Utilities;
 
 public class FileReadWriter {
 
@@ -46,6 +49,17 @@ public class FileReadWriter {
 		printWriter.close();
 		System.out.println("file wriing completed");
 		
+	}
+	
+	public HashMap<String, Integer> getWordMap() {
+		ArrayList<String> stringsInWordMapFile = readStringsFromFile(Utilities.WORD_MAP_FILE_NAME);
+		HashMap<String, Integer> wordMapCount = new HashMap<>();
+		for(String str: stringsInWordMapFile) {
+			String [] splited = str.split("+");
+			wordMapCount.put(splited[0], Integer.valueOf(splited[1]));
+		}
+		
+		return wordMapCount;
 	}
 	
 	public void appendInFile(String fileName, String textToAppend) {
