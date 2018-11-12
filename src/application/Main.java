@@ -70,8 +70,8 @@ public class Main extends Application {
 		String word,word1;
 		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("test.txt")));
-			Writer writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream("banglaData2.txt"), "utf-8"));
+			BufferedReader br = new BufferedReader(new FileReader(new File("banglaWord.txt")));
+			Writer writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream("banglaData.txt"), "utf-8"));
 			//BufferedWriter bw = new BufferedWriter(new FileWriter(new File("banglaData2.txt","UTF-8")));
 			while ( (word = br.readLine() )!= null) {
 				
@@ -80,7 +80,7 @@ public class Main extends Application {
 				word1 = word.replaceAll(dot3, original3);
 				word = word1.replaceAll(dot4, original4);
 				writer.write(word+"\n");
-				System.out.println(word);
+				//System.out.println(word);
 			}
 			writer.close();	
 			br.close();
