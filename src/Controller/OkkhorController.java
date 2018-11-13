@@ -151,10 +151,20 @@ public class OkkhorController extends WindowTransition implements Initializable 
 
 		if(!okkhorTf.getText().equals("")  && keyEvent.getCode()!=KeyCode.UP && keyEvent.getCode()!= KeyCode.DOWN) {
 			
+			ArrayList< Word > arrayList = new ArrayList<>();
+			
 			InputTextNormalize itn = new InputTextNormalize();
 			itn.normalizeText(okkhorTf.getText());
 						
-			ArrayList< Word > arrayList = dt.getSuggestionList(itn.getLastWord());
+			if(keyEvent.getCode() == KeyCode.SPACE) {
+				//ArrayList<String> = comeThing(itn.getWordList());
+				//arrayList
+				System.err.println("space");
+			}
+			
+			else {
+				arrayList = dt.getSuggestionList(itn.getLastWord());
+			}
 			
 			if(arrayList!=null) {
 
@@ -162,6 +172,7 @@ public class OkkhorController extends WindowTransition implements Initializable 
 				createSuggestionList(itn.getPreviousText(),arrayList);
 			}
 			else okkhorSuggestionVb.getChildren().clear();
+			
 		}
 		
 	}
