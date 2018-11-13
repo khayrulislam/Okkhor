@@ -15,29 +15,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// SymSpell: 1 million times faster through Symmetric Delete spelling correction algorithm
-//
-// The Symmetric Delete spelling correction algorithm reduces the complexity of edit candidate generation and dictionary lookup 
-// for a given Damerau-Levenshtein distance. It is six orders of magnitude faster and language independent.
-// Opposite to other algorithms only deletes are required, no transposes + replaces + inserts.
-// Transposes + replaces + inserts of the input term are transformed into deletes of the dictionary term.
-// Replaces and inserts are expensive and language dependent: e.g. Chinese has 70,000 Unicode Han characters!
-//
-// Copyright (C) 2015 Wolf Garbe
-// Version: 3.0
-// Author: Wolf Garbe <wolf.garbe@faroo.com>
-// Maintainer: Wolf Garbe <wolf.garbe@faroo.com>
-// URL: http://blog.faroo.com/2012/06/07/improved-edit-distance-based-spelling-correction/
-// Description: http://blog.faroo.com/2012/06/07/improved-edit-distance-based-spelling-correction/
-//
-// License:
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License, 
-// version 3.0 (LGPL-3.0) as published by the Free Software Foundation.
-// http://www.opensource.org/licenses/LGPL-3.0
-//
-// Usage: single word + Enter:  Display spelling suggestions
-//        Enter without input:  Terminate the program
 
 public class SymSpell
 {
@@ -113,6 +90,7 @@ public class SymSpell
         dictionaryItem value=null;
         Object valueo;
         valueo = dictionary.get(language+key);
+        System.out.println("value -------------- "+valueo );
         if (valueo!=null)
         {
             //int or dictionaryItem? delete existed before word!
@@ -141,7 +119,7 @@ public class SymSpell
             value = new dictionaryItem();
             value.count++;
             dictionary.put(language + key, value);
-
+            
             if (key.length() > maxlength) maxlength = key.length();
         }
         
@@ -329,6 +307,7 @@ public class SymSpell
 	                    //index2word
 	                	//TODO
 	                	String suggestion = wordlist.get(suggestionint);
+	                	System.out.println(suggestion);
 	                    if (hashset2.add(suggestion))
 	                    {
 	                        //True Damerau-Levenshtein Edit Distance: adjust distance, if both distances>0
