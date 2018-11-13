@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import CurrentStatus.UserStatus;
@@ -10,6 +11,7 @@ import DataObject.User;
 import Utils.Util;
 import Validation.RegularExpressionCheck;
 import application.Main;
+import dataPackage.Sentence;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -20,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import utilities.Utilities;
 
 public class SignUpController extends WindowTransition implements Initializable {
 
@@ -45,6 +48,16 @@ public class SignUpController extends WindowTransition implements Initializable 
 			User user = new User(signUpUsernameTf.getText(), signUpEmailTf.getText(), signUpPasswordTf.getText(), Util.getDateTime(Util.DATE_FORMAT), Util.getDateTime(Util.TIME_FORMAT));
 			if( dbc.insert(user) ) {
 				System.out.println("successfully insert");
+				Utilities.READ_WRITE.appendInFile(user.getEmail()+".txt", "");
+				
+				Utilities.USER_GRAM = new ArrayList<>();
+				
+				for(int i = 0; i < 7; i++) {
+					ArrayList<Sentence> t1 = new ArrayList<>();
+					Utilities.USER_GRAM.add(t1);
+				}
+				
+				
 				loadWindow(Util.OKKHOR_FXML);
 			}
 			else {

@@ -52,6 +52,7 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	
 	public void logOut() {
 		userStatus.setDefaultUserStatus();
+		Utilities.USER_GRAM = null;
 		loadWindow(Util.SIGN_IN_FXML);
 	}
 
@@ -64,6 +65,9 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		
 		if(userStatus.getStatus().equals(Util.DEFAULT)) logOutBt.setText("পিছনে যান");
 		
+		else if(userStatus.getStatus().equals(Util.LOGGED_IN)) {
+			Utilities.USER_GRAM = Utilities.READ_WRITE.getN_Gram(userStatus.getUser().getEmail()+".txt");
+		}
 		
 		
 	}
@@ -161,8 +165,25 @@ public class OkkhorController extends WindowTransition implements Initializable 
 			previous = itn.getPreviousText();	
 			
 			if(keyEvent.getCode() == KeyCode.SPACE) {
-				ArrayList<String> list = Utilities.PREDICTOR.getNextWord(itn.getWordList());
-			
+				
+				ArrayList<String> list2 = new ArrayList<>();
+				ArrayList<String> list3 = Utilities.PREDICTOR.getNextWord(itn.getWordList());
+				
+				if(userStatus.getStatus().equals(Util.LOGGED_IN)) {
+					list2 = Utilities.PREDICTOR.getNextWordFromUserType(itn.getWordList());
+				}
+				
+				ArrayList<String> list = new ArrayList<>();
+				
+				int n = Math.min(list2.size(), 4);
+				for(int i = 0; i < n; i++) {
+					list.add(list2.get(i));
+				}
+				
+				for(String string: list3) 
+					if(!list.contains(string))
+						list.add(string);
+				
 				System.err.println("space");
 				
 				//arrayList.clear();
@@ -220,7 +241,12 @@ public class OkkhorController extends WindowTransition implements Initializable 
 	public void storeText(ActionEvent event) {
 		previousLi.getItems().add(0, okkhorTf.getText());
 		okkhorAnchorPane.requestFocus();
+		if(userStatus.getStatus().equals(Util.LOGGED_IN)) {
+			Utilities.READ_WRITE.appendInFile(userStatus.getUser().getEmail()+".txt", okkhorTf.getText());
+			Utilities.READ_WRITE.addSentanceInuserGram(okkhorTf.getText());
+		}
 		okkhorTf.clear();
+		
 		okkhorSuggestionVb.getChildren().clear();
 	}
 	

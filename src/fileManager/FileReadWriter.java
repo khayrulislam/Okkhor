@@ -18,6 +18,31 @@ public class FileReadWriter {
 	private ArrayList<String> allStrings;
 	
 	
+	public void addSentanceInuserGram(String str) {
+		int maxGram = Utilities.MAX_GRAM;
+		
+		for(int n = 2; n <= maxGram; n++) {
+			//for(String str: allString) {
+				String [] splited = str.split(" ");
+				for(int i = 0; i < splited.length - n +1; i++) {
+					ArrayList<String> words = new ArrayList<>();
+					Sentence sentence = new Sentence(words);
+					
+					String temp = splited[0];
+					
+					int maxi = Math.min(splited.length, i+n);
+					
+					
+					for(int j = i; j < maxi; j++) {
+						sentence.words.add(splited[j]);
+					}
+					Utilities.USER_GRAM.get(n).add(sentence);
+				}
+			}
+		
+		
+	}
+	
 	public ArrayList<ArrayList<Sentence>> getN_Gram(String fileName) {
 		
 		ArrayList<String> allString = readStringsFromFile(fileName);
