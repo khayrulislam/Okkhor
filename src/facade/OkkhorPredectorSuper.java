@@ -34,8 +34,6 @@ public class OkkhorPredectorSuper implements OkkhorPredector {
 	protected void updateWordCountMap() {
 		ArrayList<String> words = Utilities.READ_WRITE.readStringsFromFile(Utilities.WORD_FILE_NAME);
 		
-		
-		// word map counter to file write 
 		for (String str : words) {
 			if (!wordCountMap.containsKey(str))
 				wordCountMap.put(str, 1);
@@ -51,7 +49,6 @@ public class OkkhorPredectorSuper implements OkkhorPredector {
 		}
 
 		Utilities.READ_WRITE.writeOutput(words, Utilities.WORD_MAP_FILE_NAME);
-		
 	}
 
 }

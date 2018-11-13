@@ -135,7 +135,7 @@ public class FileReadWriter {
 		try {
 			fr = new FileWriter(file, true);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			System.out.println("file not found to append");
 		}
 		BufferedWriter br = new BufferedWriter(fr);
@@ -177,5 +177,5 @@ public class FileReadWriter {
 		
 		return count;
 	}
-
+	
 }
