@@ -23,7 +23,7 @@ public class Util {
 	
 	public static final String DEFAULT = "default";
 	
-	public static final String BANGLE_LETTER = "ৄৠৡৢৣঅআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ০১২৩৪৫৬৭৮৯ািীুূৃেৈোৌ্ৗঽঌৰৱ";
+	public static final String BANGLE_LETTER = "ৄৠৡৢৣঅআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ০১২৩৪৫৬৭৮৯ািীুূৃেৈোৌ্ৗঽঌৰৱ123456789 ";
 
 	public static final int NUMBER_OF_LATTER = BANGLE_LETTER.length();
 	

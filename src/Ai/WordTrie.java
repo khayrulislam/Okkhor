@@ -35,7 +35,7 @@ public class WordTrie {
 		String word;
 		createRoot();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("banglaData2.txt")));
+			BufferedReader br = new BufferedReader(new FileReader(new File("banglaData3.txt")));
 			// TODO get data form databa
 			while ( (word = br.readLine() )!= null) {
 				insertWord(root, new Word(word));
