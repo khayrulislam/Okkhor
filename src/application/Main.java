@@ -42,35 +42,6 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-String word,word1;
-		
-		HashMap<String, Integer> wordMap = new HashMap<>();
-		
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("sentences.txt")));
-			Writer writer = new BufferedWriter(new OutputStreamWriter( new FileOutputStream("sentence4.txt"), "utf-8"));
-			//BufferedWriter bw = new BufferedWriter(new FileWriter(new File("banglaData2.txt","UTF-8")));
-			while ( (word = br.readLine() )!= null) {
-				
-				String [] arr = word.split(" ");
-				
-				//int x = Integer.parseInt(arr[1]);
-				
-				if(arr.length<7 && arr.length!=1) writer.write(word+"\n");
-				
-			//	if(wordMap.containsKey(word)) wordMap.put(word, wordMap.get(word)+1);
-				//else wordMap.put(word, 1);
-				//writer.write(word+"\n");
-				//System.out.println(word);
-			}
-			
-			
-			System.out.println("end");
-			writer.close();	
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 		
 		
@@ -80,9 +51,7 @@ String word,word1;
 		
 		
 		
-		
-		
-		/*Thread thread1 = new Thread(){
+		Thread thread1 = new Thread(){
 		    public void run(){	
 		    	Utilities.ALL_GRAM = Utilities.READ_WRITE.getN_Gram(Utilities.SENTENCE_FILE_NAME);	
 				System.out.println("done");
@@ -100,7 +69,7 @@ String word,word1;
 		    }
 		};
 		thread.start();
-		launch(args);*/
+		launch(args);
 		
 		//DataBaseConnection dbc = new DataBaseConnection();
 		//dbc.createNewDatabase();

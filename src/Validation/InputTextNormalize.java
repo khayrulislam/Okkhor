@@ -16,6 +16,7 @@ public class InputTextNormalize {
 		
 		String [] array = spaceNormalization(text).split(" ");
 		lastWord = array[array.length-1];
+		
 		for(int i=0;i<array.length-1;i++) previousText += array[i]+" ";
 		
 		for(int i=0;i<array.length;i++) wordArray.add(array[i]);

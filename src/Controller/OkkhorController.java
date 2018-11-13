@@ -153,21 +153,24 @@ public class OkkhorController extends WindowTransition implements Initializable 
 		if(!okkhorTf.getText().equals("")  && keyEvent.getCode()!=KeyCode.UP && keyEvent.getCode()!= KeyCode.DOWN) {
 			
 			ArrayList< Word > arrayList = new ArrayList<>();
+			String previous;
 			
 			InputTextNormalize itn = new InputTextNormalize();
 			itn.normalizeText(okkhorTf.getText());
-						
+			
+			previous = itn.getPreviousText();	
+			
 			if(keyEvent.getCode() == KeyCode.SPACE) {
-				ArrayList<String> list = Utilities.PREDICTOR.getNextWord(itn.getWordList()); //comeThing(itn.getWordList());
-				//arrayList
+				ArrayList<String> list = Utilities.PREDICTOR.getNextWord(itn.getWordList());
+			
 				System.err.println("space");
 				
-				arrayList.clear();
+				//arrayList.clear();
 				
 				for(int i=0;i<list.size();i++) {
 					arrayList.add(new Word(list.get(i), 0));
 				}
-				
+				previous = itn.getPreviousText()+itn.getLastWord()+" ";
 			}
 			
 			else {
@@ -175,23 +178,13 @@ public class OkkhorController extends WindowTransition implements Initializable 
 			}
 			
 			if(arrayList!=null) {
-
-				//addPrefix(itn.getPreviousText(), arrayList);								
-				createSuggestionList(itn.getPreviousText(),arrayList);
+				createSuggestionList(previous,arrayList);
 			}
 			else okkhorSuggestionVb.getChildren().clear();
 			
 		}
 		
 	}
-	
-	
-	/*private void addPrefix(String previousText, ArrayList<Word> arrayList) {
-		
-		for(int i=0;i< Math.min(Util.NUMBER_OF_SUGGESTION_ITEM_SHOW, arrayList.size()) ;i++) {
-			arrayList.set(i, previousText+arrayList.get(i).getBengaliWord());
-		}
-	}*/
 
 	public void ff(ActionEvent event) {
 		//createSuggestionList();

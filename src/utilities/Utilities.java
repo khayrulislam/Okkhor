@@ -12,7 +12,7 @@ import fileManager.FileReadWriter;
 public class Utilities {
 
 	public static String WORD_FILE_NAME = "words.txt";
-	public static String SENTENCE_FILE_NAME = "sentences.txt";
+	public static String SENTENCE_FILE_NAME = "sentence4.txt";
 	public static String OUTPUT_FILE_NAME = "output.txt";
 	public static String INPUT_FILE_NAME = "input.txt";
 	public static String USER_INFO_FILE = "user.txt";

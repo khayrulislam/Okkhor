@@ -35,12 +35,12 @@ public class WordTrie {
 		String word;
 		createRoot();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(new File("banglaData3.txt")));
+			BufferedReader br = new BufferedReader(new FileReader(new File("banglaData4.txt")));
 			// TODO get data form databa
 			while ( (word = br.readLine() )!= null) {
 				insertWord(root, new Word(word));
-				i++;
-				System.err.println(i);
+				//i++;
+				//System.err.println(i);
 			}	
 			br.close();
 		} catch (IOException e) {
