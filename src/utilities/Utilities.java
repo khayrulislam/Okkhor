@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import dataAnalyzer.Gram_Converter;
 import dataAnalyzer.Predector;
+import dataPackage.Sentence;
 import facade.Facade;
 import fileManager.FileReadWriter;
 import user.User;
@@ -24,6 +25,13 @@ public class Utilities {
 
 	public static int MAX_GRAM = 5;
 
+	public static User CURRENT_USER;
+	public static String USER_TYPED_FILE_NAME;
+	
+	
+	public static ArrayList<ArrayList<Sentence>> ALL_GRAM = new ArrayList<>();
+	public static ArrayList<ArrayList<Sentence>> USER_GRAM = new ArrayList<>();
+	
 	public static java.util.Scanner SCANNER = new java.util.Scanner(System.in);
 	public static FileReadWriter READ_WRITE = new FileReadWriter();
 	public static Predector PREDICTOR = new Predector();

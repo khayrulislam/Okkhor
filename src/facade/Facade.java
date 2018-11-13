@@ -13,6 +13,7 @@ public class Facade {
 	public void process() {
 		
 		initializeUserInformation();
+		initializeALLGRAM();
 		initializeDecorator();
 		
 		new OkkhorPredectorSuper().carryPrediction();
@@ -36,6 +37,11 @@ public class Facade {
 		
 	}
 
+	private void initializeALLGRAM() {
+		Utilities.ALL_GRAM = Utilities.READ_WRITE.getN_Gram(Utilities.SENTENCE_FILE_NAME);
+		
+	}
+
 	private void initializeDecorator() {
 		// TODO Auto-generated method stub
 		
@@ -45,7 +51,7 @@ public class Facade {
 		ArrayList<String> info = Utilities.READ_WRITE.readStringsFromFile(Utilities.USER_INFO_FILE);
 		for(String str: info) {
 			String [] splited = str.split(" ");
-			Utilities.ALL_USER.add(new User(splited[0], splited[1]));
+			Utilities.ALL_USER.add(new User("name",splited[0], splited[1]));
 		}
 		System.out.println("User information initialization completed. Total user size = " + Utilities.ALL_USER.size());
 	}
