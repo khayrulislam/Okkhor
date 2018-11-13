@@ -26,11 +26,7 @@ public class User {
 	public String getEmail() {
 		return email;
 	}
-
-	/*
-	public String getPassword() {
-		return password;
-	}*/
+	
 	
 	public String getUserTypedWordFileName() {
 		String hash = "35454B055";

@@ -21,14 +21,12 @@ public class FileReadWriter {
 	public ArrayList<ArrayList<Sentence>> getN_Gram(String fileName) {
 		
 		ArrayList<String> allString = readStringsFromFile(fileName);
-		//ArrayList<ArrayList<String>> StrGram = new ArrayList<>();
 		ArrayList<ArrayList<Sentence>> Gram = new ArrayList<>();
 		
 		for(int i = 0; i < 7; i++) {
 			ArrayList<Sentence> t1 = new ArrayList<>();
 			ArrayList<String> t2 = new ArrayList<>();
 			Gram.add(t1);
-			//StrGram.add(t2);
 		}
 		
 		int maxGram = Utilities.MAX_GRAM;
