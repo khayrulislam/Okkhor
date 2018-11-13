@@ -13,13 +13,22 @@ public class OkkhorPredectorSuper implements OkkhorPredector {
 	@Override
 	public void carryPrediction() {
 
-		wordCountMap = new HashMap<>();
+		//wordCountMap = new HashMap<>();
 		
+		wordCountMap = Utilities.READ_WRITE.getWordMap();
+		
+		System.out.println(wordCountMap.size());
 		//System.out.println(wordCountMap.get("ফিরে"));
 		
 		
-		updateWordCountMap();
+		maptest();
+		//updateWordCountMap();
 
+	}
+
+	private void maptest() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	protected void updateWordCountMap() {

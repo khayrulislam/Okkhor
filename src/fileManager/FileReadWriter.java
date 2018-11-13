@@ -55,7 +55,7 @@ public class FileReadWriter {
 		ArrayList<String> stringsInWordMapFile = readStringsFromFile(Utilities.WORD_MAP_FILE_NAME);
 		HashMap<String, Integer> wordMapCount = new HashMap<>();
 		for(String str: stringsInWordMapFile) {
-			String [] splited = str.split("+");
+			String [] splited = str.split(" ");
 			wordMapCount.put(splited[0], Integer.valueOf(splited[1]));
 		}
 		
