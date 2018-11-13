@@ -24,6 +24,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import utilities.Utilities;
 
 public class OkkhorController extends WindowTransition implements Initializable {
 	
@@ -157,9 +158,16 @@ public class OkkhorController extends WindowTransition implements Initializable 
 			itn.normalizeText(okkhorTf.getText());
 						
 			if(keyEvent.getCode() == KeyCode.SPACE) {
-				//ArrayList<String> = comeThing(itn.getWordList());
+				ArrayList<String> list = Utilities.PREDICTOR.getNextWord(itn.getWordList()); //comeThing(itn.getWordList());
 				//arrayList
 				System.err.println("space");
+				
+				arrayList.clear();
+				
+				for(int i=0;i<list.size();i++) {
+					arrayList.add(new Word(list.get(i), 0));
+				}
+				
 			}
 			
 			else {

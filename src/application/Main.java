@@ -1,28 +1,15 @@
 package application;
 	
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import Ai.WordTrie;
 import Factory.FactoryClass;
 import Utils.Util;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
+import javafx.stage.Stage;
+import utilities.Utilities;
 
 public class Main extends Application {
 	
@@ -51,6 +38,7 @@ public class Main extends Application {
 		    public void run(){
 		    	new FactoryClass();
 		    	WordTrie dt = WordTrie.getDateBaseInstance();
+		    	Utilities.ALL_GRAM = Utilities.READ_WRITE.getN_Gram(Utilities.SENTENCE_FILE_NAME);
 				dt.builtTrie();
 				System.out.println("done");
 		    }
