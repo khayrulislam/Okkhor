@@ -160,5 +160,24 @@ public class FileReadWriter {
 			e.printStackTrace();
 		}
 	}
+	
+	public HashMap<String, Integer> getUserWordCount(String userFileName) {
+		
+		ArrayList<String> allStrings = readStringsFromFile(userFileName);
+		HashMap<String, Integer> count = new HashMap<>();
+		
+		for(String str: allStrings) {
+			String []array = str.split(" ");
+			for(String word: array) {
+				if(count.containsKey(word)) {
+					count.put(word, count.get(word)+1);
+				} else {
+					count.put(word, 1);
+				}
+			}
+		}
+		
+		return count;
+	}
 
 }

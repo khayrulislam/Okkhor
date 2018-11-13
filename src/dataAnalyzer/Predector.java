@@ -66,7 +66,6 @@ public class Predector {
 				nextMayBe.add(sentence.words.get(count));
 			}
 		}
-
 		return highestOccurence(nextMayBe);
 	}
 
