@@ -134,10 +134,11 @@ public class N_Gram {
 		}
 		
 		
+		/*
 		for(int i = 2; i <= Utilities.MAX_GRAM; i++) {
 			Utilities.READ_WRITE.writeOutput(StrGram.get(i), Utilities.GRAM_FILENAME.get(i));
 			System.out.println("completed");
-		}
+		}*/
 		
 		String line = null;
 		
