@@ -2,9 +2,12 @@ package Validation;
 
 import java.util.ArrayList;
 
+import Utils.Util;
+
 public class InputTextNormalize {
 
 	private String lastWord, previousText="";
+	private boolean validText;
 	
 	private ArrayList<String> wordArray = new ArrayList<>();
 	
@@ -12,7 +15,19 @@ public class InputTextNormalize {
 		return text.replaceAll("\\s+", " ");
 	}
 	
+	public InputTextNormalize() {
+		this.validText = true;
+	}
+
 	public void normalizeText(String text) {
+		
+		
+		for(int i=0;i<text.length();i++) {
+			if(!Util.BANGLE_LETTER.contains(String.valueOf(text.charAt(i)))) {
+				validText = false;
+				break;
+			}
+		}
 		
 		String [] array = spaceNormalization(text).split(" ");
 		lastWord = array[array.length-1];
@@ -21,6 +36,10 @@ public class InputTextNormalize {
 		
 		for(int i=0;i<array.length;i++) wordArray.add(array[i]);
 		
+	}
+
+	public boolean isValidText() {
+		return this.validText;
 	}
 
 	public String getLastWord() {

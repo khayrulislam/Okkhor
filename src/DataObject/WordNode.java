@@ -10,6 +10,7 @@ public class WordNode {
 	
 	public WordNode() {
 		this.isTheEnd = false;
+		this.numberOfUse = 0;
 		for(int i=0;i<Util.NUMBER_OF_LATTER;i++) this.children[i]=null;
 	}
 	

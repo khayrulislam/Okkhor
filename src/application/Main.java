@@ -62,7 +62,7 @@ public class Main extends Application {
 		Thread thread = new Thread(){
 		    public void run(){
 		    	new FactoryClass();
-		    	WordTrie dt = WordTrie.getDateBaseInstance();
+		    	WordTrie dt = WordTrie.getWordTrieInstance();
 		    	//Utilities.ALL_GRAM = Utilities.READ_WRITE.getN_Gram(Utilities.SENTENCE_FILE_NAME);
 				dt.builtTrie();
 				System.out.println("done");

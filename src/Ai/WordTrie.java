@@ -20,7 +20,7 @@ public class WordTrie {
 	
 	private WordTrie() {}
 	
-	public static WordTrie getDateBaseInstance() {
+	public static WordTrie getWordTrieInstance() {
 		
 		if(dt==null) {
 			synchronized (WordTrie.class) {
@@ -99,6 +99,12 @@ public class WordTrie {
 		return true;
 	}
 
+	
+	public void insertFromOutSide(Word word) {
+		insertWord(root, word);
+	}
+	
+	
 	private void insertWord(WordNode root, Word word) {
 		
 		WordNode temp = root;
@@ -110,7 +116,7 @@ public class WordTrie {
 			temp = temp.children[index];
 		}
 		temp.isTheEnd = true;
-		temp.numberOfUse = word.getCount();
+		temp.numberOfUse += word.getCount();
 	}
 
 	private int getIndex(char charAt) {
