@@ -226,9 +226,6 @@ public class OkkhorController extends WindowTransition implements Initializable 
 				}
 				else okkhorSuggestionVb.getChildren().clear();
 				
-				
-				
-				
 				currentItemNumber = -1;
 			}
 			
